@@ -14,7 +14,7 @@ It serves as a reference to help administrators manage and configure the OTOBO A
 
 
 Overview
---------
+---------
 
 *Roboto implements a RAG (Retrieval-Augmented Generation) system i.e.,
 it is able to generate response suggestions for tickets based on the data from within your OTOBO.*
