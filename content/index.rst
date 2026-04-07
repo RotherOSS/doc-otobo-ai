@@ -70,7 +70,7 @@ If a new article is created, **generate an answer**:
    tuning
 
 
-This work is copyrighted by ROTHER OSS GmbH (https://otobo.de),
+This work is copyrighted by ROTHER OSS GmbH (https://otobo.io),
 Oberwalting 31, 94339 Leiblfing, Germany
 
 Terms and Conditions Rother OSS:
