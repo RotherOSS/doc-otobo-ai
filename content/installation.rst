@@ -71,10 +71,10 @@ Use Docker Compose to build and run the server:
 --------------------
 
 The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``.
-See the `OTOBO Admin Guide <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO.
+See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO.
 
 Configure the package settings in the system configuration.
-See the `OTOBO Admin Guide <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions.
+See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions.
 The package manual includes all relevant information.
 You may just search ``OTOBOAI::`` to find all relevant settings.
 These are the basic steps:
