@@ -41,7 +41,7 @@ venv: $(VENV_STAMP) ## Validate the virtual environment and install dependencies
 build: $(VENV_STAMP) ## Build the local HTML preview.
 	@echo "Generating local HTML preview ..."
 	@$(SPHINXBUILD) --builder html "$(SOURCEDIR)" "$(BUILDDIR)/html"
-	@echo "Done! Run \"make show\" to show the preview in your browser."
+	@echo "Done! Run \"make open\" to show the preview in your browser."
 
 check: $(VENV_STAMP) ## Check validity
 	@status=0; \
