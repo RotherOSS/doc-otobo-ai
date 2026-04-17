@@ -1,6 +1,3 @@
-About
-======
-
 This repository stores the source of the _OTOBO AI Manual_.
 
 The content of the documentation is in [reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText) format and uses [Sphinx](https://www.sphinx-doc.org) to generate HTML, PDF and EPUB outputs.
