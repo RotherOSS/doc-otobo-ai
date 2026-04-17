@@ -5,7 +5,8 @@ Every OTOBO is different.
 And so is the information processed by it.
 To account for this fact, this setup is as flexible as possible.
 There are a `lot` of options when tuning this setup.
-
+If you would like to dig into the answer generation process, it is recommended to hook a `Langfuse <https://www.langfuse.com/>`_ to your RAG setup.
+This chapter addresses the various tuning options available.
 
 Prompt
 ------
@@ -82,15 +83,16 @@ Evaluation
 ----------
 
 In order to evaluate the impact of changes to the quality of system responses, Roboto facilitates scoring of answers generated for an *evaluation set*.
-An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (ref :doc:`usage`).
+An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (see :doc:`usage`).
 You may generate a *sample* during import like this:
 
 .. code-block:: bash
 
-    bin/otobo.console.pl Maint::AI::Import --sample-nth 20 --sample sample.json
+    bin/otobo.console.pl Maint::AI::Import --sample-nth 20 --sample ~/var/ai/sample.json
 
 Sample size should depend on the amount of tickets to import, but should range from 20% (hard validation) to 5% (plausibility check).
 This evaluation set might even be excluded from reimport by passing the ``--reference`` argument.
+It seems reasonable to keep a sample file at ``~/var/ai/sample.json``.
 If the evaluation set is ever imported, evaluation will be structurally biased and hence useless.
 
 In order to evaluate Roboto's performance on an evaluation set, answers are generated for the tickets in the evaluation set and these answers are evaluated with respect to a set of freely chosen criteria.
@@ -106,8 +108,8 @@ Run the evaluation like this:
 .. code-block:: bash
 
     bin/otobo.console.pl Maint::AI::Scoring \
-      --sample /opt/otobo/sample.json \
-      --result /opt/otobo/score.csv \
-      --json /opt/otobo/score.json
+      --sample /opt/otobo/var/ai/sample.json \
+      --result /opt/otobo/var/ai/score-baseline.csv \
+      --json /opt/otobo/var/ai/score-baseline.json
 
 You may use ``jq`` and a spreadsheet application for analysis.

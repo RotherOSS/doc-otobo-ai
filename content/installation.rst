@@ -48,7 +48,7 @@ All RAG definitions placed here are exposed at the web service.
    Docker mounts the local ``./rags`` directory into the container as ``src/rags``, enabling external customization.
    However, a restart of the container is required for the changes to take effect.
 
-You may tune it to your liking (ref. :doc:`tuning`), or create a new one!
+You may tune it to your liking (see :doc:`tuning`), or create a new one!
 You *should* at least tailor the prompt to your use case.
 
 Create a ``.env`` file in the root directory to configure environment variables:
@@ -71,12 +71,16 @@ Use Docker Compose to build and run the server:
 --------------------
 
 The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``.
-See the `OTOBO Admin Guide <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO.
+See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO.
 
 Configure the package settings in the system configuration.
-See the `OTOBO Admin Guide <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions.
+See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions.
 The package manual includes all relevant information.
 You may just search ``OTOBOAI::`` to find all relevant settings.
+These are the basic steps:
 
+#. Select data for import into the RAG stack (what your answers are based on).
+#. Configure the auth token into the webservice.
+#. Setup the answer template.
 
 Continue to :doc:`usage`.
