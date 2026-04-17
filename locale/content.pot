@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-07 04:38+0000\n"
+"POT-Creation-Date: 2026-04-17 09:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,7 +160,7 @@ msgid "Docker mounts the local ``./rags`` directory into the container as ``src/
 msgstr ""
 
 #: ../content/installation.rst:51
-msgid "You may tune it to your liking (ref. :doc:`tuning`), or create a new one! You *should* at least tailor the prompt to your use case."
+msgid "You may tune it to your liking (see :doc:`tuning`), or create a new one! You *should* at least tailor the prompt to your use case."
 msgstr ""
 
 #: ../content/installation.rst:54
@@ -180,14 +180,26 @@ msgid "``OTOBO-AI`` Package"
 msgstr ""
 
 #: ../content/installation.rst:73
-msgid "The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``. See the `OTOBO Admin Guide <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO."
+msgid "The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``. See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO."
 msgstr ""
 
 #: ../content/installation.rst:76
-msgid "Configure the package settings in the system configuration. See the `OTOBO Admin Guide <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions. The package manual includes all relevant information. You may just search ``OTOBOAI::`` to find all relevant settings."
+msgid "Configure the package settings in the system configuration. See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions. The package manual includes all relevant information. You may just search ``OTOBOAI::`` to find all relevant settings. These are the basic steps:"
 msgstr ""
 
 #: ../content/installation.rst:82
+msgid "Select data for import into the RAG stack (what your answers are based on)."
+msgstr ""
+
+#: ../content/installation.rst:83
+msgid "Configure the auth token into the webservice."
+msgstr ""
+
+#: ../content/installation.rst:84
+msgid "Setup the answer template."
+msgstr ""
+
+#: ../content/installation.rst:86
 msgid "Continue to :doc:`usage`."
 msgstr ""
 
@@ -196,90 +208,90 @@ msgid "Tuning"
 msgstr ""
 
 #: ../content/tuning.rst:4
-msgid "Every OTOBO is different. And so is the information processed by it. To account for this fact, this setup is as flexible as possible. There are a `lot` of options when tuning this setup."
+msgid "Every OTOBO is different. And so is the information processed by it. To account for this fact, this setup is as flexible as possible. There are a `lot` of options when tuning this setup. If you would like to dig into the answer generation process, it is recommended to hook a `Langfuse <https://www.langfuse.com/>`_ to your RAG setup. This chapter addresses the various tuning options available."
 msgstr ""
 
-#: ../content/tuning.rst:11
+#: ../content/tuning.rst:12
 msgid "Prompt"
 msgstr ""
 
-#: ../content/tuning.rst:13
+#: ../content/tuning.rst:14
 msgid "Prompt templates can be adjusted very freely. They are placed at the rags folder in the folders of the ``otobo-ai-services``. There are two prompts, one for answer generation, which is discussed here, and one for answer evaluation, which is discussed below. They have significant impact on the form of the generated answer."
 msgstr ""
 
-#: ../content/tuning.rst:18
+#: ../content/tuning.rst:19
 msgid "A prompt is composed of a *system* part. It allows you to define a general setting and role for the LLM to act in. It is introduced by:"
 msgstr ""
 
-#: ../content/tuning.rst:26
+#: ../content/tuning.rst:27
 msgid "It is followed by the *user* part. This part is composed of the *context*, a specific task and the *question*, injected to the prompt by ``{question}``, to answer. It is introduced by:"
 msgstr ""
 
-#: ../content/tuning.rst:34
+#: ../content/tuning.rst:35
 msgid "The context is composed by these tags: ``{faqs}``, ``{docs}``, ``{ticket_data}``, and ``{ticket_chunks}``. Tickets are presented by question-answer-pairs (first customer article in and last agent article out) as well as chunks. During import, data is cut into overlapping chunks. This facilitates topical specificity within the chunks. However, on close inspection of the prompts, one may find the chunks too small or too large. **Chunk size** might be fit by setting the variables ``OTOBO_AI_EMBEDDING_CHUNK_SIZE`` and ``OTOBO_AI_EMBEDDING_CHUNK_OVERLAP`` in your ``.env``."
 msgstr ""
 
-#: ../content/tuning.rst:41
+#: ../content/tuning.rst:42
 msgid "Given a question, the most relevant pieces by type are selected. However, this list has to be cut off. Only the most ``n`` relevant hits are considered. Please refer to the ``graph.py`` of your rag definition."
 msgstr ""
 
-#: ../content/tuning.rst:46
+#: ../content/tuning.rst:47
 msgid "The format of the external documentation may also be considered. Different data format might be processed differently."
 msgstr ""
 
-#: ../content/tuning.rst:49
+#: ../content/tuning.rst:50
 msgid "The prompt closes with a tag for the answer:"
 msgstr ""
 
-#: ../content/tuning.rst:57
+#: ../content/tuning.rst:58
 msgid "Models"
 msgstr ""
 
-#: ../content/tuning.rst:59
+#: ../content/tuning.rst:60
 msgid "There are two models at play, one that provides the embeddings and hence is responsible for the decision on what information is deemed most relevant to the question at hand. The other one is for answer generation and extracts an answer from the presented documents and presents it in the form requested in the prompt. Both models have to be capable of handling the language(s) you want to process. They may be configured in the ``.env`` file of the ``otobo-ai-services``."
 msgstr ""
 
-#: ../content/tuning.rst:64
+#: ../content/tuning.rst:65
 msgid "The main characteristics of the embedding models, aside from benchmarks, are *context size* and *dimensions*. The bigger the information pieces to process are, the bigger the *context size* needs to be. With an increase in nuances in the whole information pool, the *dimensions* need to increase to account for the differences."
 msgstr ""
 
-#: ../content/tuning.rst:68
+#: ../content/tuning.rst:69
 msgid "At the time of writing, it is generally recommended to use an instruction-tuned model in order to obtain answers faithful to the prompt given. Furthermore, a multi-modal model should be considered. Please keep in mind, that this model has to support a quite large context window because it needs to consume all relevant documents at once."
 msgstr ""
 
-#: ../content/tuning.rst:72
+#: ../content/tuning.rst:73
 msgid "The model itself may be tuned by *temperature*, which is the models risk affinity to the possibility to hallucinate. It may be specified in the ``.env``. In order to obtain faithful answers, lower values are recommended."
 msgstr ""
 
-#: ../content/tuning.rst:77
+#: ../content/tuning.rst:78
 msgid "At the time of writing, images are not considered for processing."
 msgstr ""
 
-#: ../content/tuning.rst:82
+#: ../content/tuning.rst:83
 msgid "Evaluation"
 msgstr ""
 
-#: ../content/tuning.rst:84
-msgid "In order to evaluate the impact of changes to the quality of system responses, Roboto facilitates scoring of answers generated for an *evaluation set*. An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (ref :doc:`usage`). You may generate a *sample* during import like this:"
+#: ../content/tuning.rst:85
+msgid "In order to evaluate the impact of changes to the quality of system responses, Roboto facilitates scoring of answers generated for an *evaluation set*. An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (see :doc:`usage`). You may generate a *sample* during import like this:"
 msgstr ""
 
-#: ../content/tuning.rst:92
-msgid "Sample size should depend on the amount of tickets to import, but should range from 20% (hard validation) to 5% (plausibility check). This evaluation set might even be excluded from reimport by passing the ``--reference`` argument. If the evaluation set is ever imported, evaluation will be structurally biased and hence useless."
+#: ../content/tuning.rst:93
+msgid "Sample size should depend on the amount of tickets to import, but should range from 20% (hard validation) to 5% (plausibility check). This evaluation set might even be excluded from reimport by passing the ``--reference`` argument. It seems reasonable to keep a sample file at ``~/var/ai/sample.json``. If the evaluation set is ever imported, evaluation will be structurally biased and hence useless."
 msgstr ""
 
-#: ../content/tuning.rst:96
+#: ../content/tuning.rst:98
 msgid "In order to evaluate Roboto's performance on an evaluation set, answers are generated for the tickets in the evaluation set and these answers are evaluated with respect to a set of freely chosen criteria. These evaluation criteria are defined in the ``eval_prompt.txt`` of your RAG definition. The difference to the RAG prompt is the data description and format definition as the task."
 msgstr ""
 
-#: ../content/tuning.rst:102
+#: ../content/tuning.rst:104
 msgid "The model chosen for evaluation needs to follow prompt instructions very closely."
 msgstr ""
 
-#: ../content/tuning.rst:104
+#: ../content/tuning.rst:106
 msgid "Run the evaluation like this:"
 msgstr ""
 
-#: ../content/tuning.rst:113
+#: ../content/tuning.rst:115
 msgid "You may use ``jq`` and a spreadsheet application for analysis."
 msgstr ""
 
