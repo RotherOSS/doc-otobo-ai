@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 12:53+0000\n"
+"POT-Creation-Date: 2026-07-07 12:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../content/index.rst:64
+#: ../content/index.rst:69
 msgid "Contents"
 msgstr ""
 
@@ -32,78 +32,82 @@ msgstr ""
 msgid "Roboto is currently in closed beta. If interested, feel free to `contact us <mailto:hallo@otobo.io>`_."
 msgstr ""
 
-#: ../content/index.rst:17
-msgid "Overview"
-msgstr ""
-
-#: ../content/index.rst:19
-msgid "*Roboto implements a RAG (Retrieval-Augmented Generation) system i.e., it is able to generate response suggestions for tickets based on the data from within your OTOBO.*"
+#: ../content/index.rst:16
+msgid "This documentation is for the **11.1 beta** version of OTOBO. It may contain incomplete or inaccurate information, and some features may not be fully functional. Please use this documentation with caution and report any issues to the OTOBO development team. You may find the **documentation for the latest stable release** at https://doc.otobo.org/manual/ai/11.0/en/content/index.html."
 msgstr ""
 
 #: ../content/index.rst:22
+msgid "Overview"
+msgstr ""
+
+#: ../content/index.rst:24
+msgid "*Roboto implements a RAG (Retrieval-Augmented Generation) system i.e., it is able to generate response suggestions for tickets based on the data from within your OTOBO.*"
+msgstr ""
+
+#: ../content/index.rst:27
 #: ../content/installation.rst:4
 msgid "There are two components that interface OTOBO with an LLM:"
 msgstr ""
 
-#: ../content/index.rst:24
+#: ../content/index.rst:29
 #: ../content/installation.rst:6
 msgid "The services ``otobo-ai-services``."
 msgstr ""
 
-#: ../content/index.rst:25
+#: ../content/index.rst:30
 #: ../content/installation.rst:7
 msgid "The ``otobo-ai`` OTOBO package."
 msgstr ""
 
-#: ../content/index.rst:27
+#: ../content/index.rst:32
 msgid "The OTOBO package is the interface between OTOBO and the services. The services hold the data in a format that allows finding similar data related to a request efficiently, and interface with the LLM."
 msgstr ""
 
-#: ../content/index.rst:41
+#: ../content/index.rst:46
 msgid "Workflow"
 msgstr ""
 
-#: ../content/index.rst:43
+#: ../content/index.rst:48
 msgid "At first, all tickets, FAQ and external documentation are **imported**. During this step, the information is scrubbed, chunked, and sent to a small LLM to obtain a numeric vector that describes the presented information. This procedure is called embedding. Every vector describes a point in high dimensional space. Similar information will be close to each other. All the vectors and documents are stored in the otobo-ai-services. This allows for fast selection of documents that address the same topic."
 msgstr ""
 
-#: ../content/index.rst:52
+#: ../content/index.rst:57
 msgid "If a new article is created, **generate an answer**:"
 msgstr ""
 
-#: ../content/index.rst:54
+#: ../content/index.rst:59
 msgid "An embedding is requested for the new article. The resulting vector is used to identify related documents."
 msgstr ""
 
-#: ../content/index.rst:56
+#: ../content/index.rst:61
 msgid "The related documents are injected into the prompt for a larger LLM to generate an answer based on the provided information."
 msgstr ""
 
-#: ../content/index.rst:57
+#: ../content/index.rst:62
 msgid "The generated answer is stored in a Dynamic Field at the article."
 msgstr ""
 
-#: ../content/index.rst:58
+#: ../content/index.rst:63
 msgid "The dynamic field can be referenced in an Answer Template."
 msgstr ""
 
-#: ../content/index.rst:59
+#: ../content/index.rst:64
 msgid "If the user chooses this Answer Template, the generated answer of the LLM will be visible in the compose window."
 msgstr ""
 
-#: ../content/index.rst:73
+#: ../content/index.rst:78
 msgid "This work is copyrighted by ROTHER OSS GmbH (https://otobo.io), Oberwalting 31, 94339 Leiblfing, Germany"
 msgstr ""
 
-#: ../content/index.rst:76
+#: ../content/index.rst:81
 msgid "Terms and Conditions Rother OSS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"COPYING\"."
 msgstr ""
 
-#: ../content/index.rst:83
+#: ../content/index.rst:88
 msgid "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany."
 msgstr ""
 
-#: ../content/index.rst:86
+#: ../content/index.rst:91
 msgid "Authors: Rother OSS GmbH (https://otobo.de)."
 msgstr ""
 
