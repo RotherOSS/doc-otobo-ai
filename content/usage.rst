@@ -2,17 +2,24 @@ Usage
 =====
 
 In order for Roboto to generate answers, you need to import the relevant data.
-After import answers to articles may be generated and the database may be queried individually.
+After import, answers to articles may be generated and the database may be queried individually.
+With the ``OTOBO-AI`` package installed, three data sources may be configured: Tickets, FAQs and documents.
+
+
+Search Restictions
+------------------
+
+Tickets and FAQs import selection is guided by their search functions, i.e. you may use any field and restriction from the `classic search function <https://doc.otobo.org/manual/user/11.0/en/content/agent/search/search.html>`_.
+Add the desired configurations to the system settings ``OTOBOAI::Ticket::SearchRestrictions`` and ``OTOBOAI::FAQ::SearchRestrictions``, respectively, as well as one or more labels under which the items should be imported into the database.
+
+Feel free to configure multiple ``SearchRestrictions`` per data source in case different restrictions should map to different labels.  
+Place documentation under the path configured in the system setting ``OTOBOAI::Document::SearchRestrictions``, relative to your OTOBO installation.
 
 
 Data Import
 -----------
 
-With the ``OTOBO-AI`` package installed, three data sources may be configured: tickets, FAQ and documents.
-Tickets and FAQs import selection is guided by their search functions, i.e., you may use any field and restriction from the `classic search function <https://doc.otobo.org/manual/user/11.0/en/content/agent/search/search.html>`_.
-Place documentation under the path configured in the system setting ``OTOBOAI::Document::SearchRestrictions`` relative to your OTOBO installation.
-And import all the data from command line:
-
+Now you are ready to import all data sources from command line:
 
 .. code-block:: bash
 
@@ -37,6 +44,28 @@ You may verify the import using the command line from the ``otobo-ai`` container
 .. code-block:: bash
 
     docker compose exec otobo-ai python src/cli.py
+
+Please note that any change to the ``SearchRestrictions`` of a data source may warrant a full reimport of that source to guarantee a valid database state. The import command supports a ``‑‑reimport`` parameter for this situation.
+
+
+Incremental Ingestion
+---------------------
+
+The ``OTOBO-AI`` package supports the automatic synchronization of newly added or updated tickets and FAQ items via incremental ingestion. More precisely, OTOBO listens to a pre-defined set of Ticket and FAQ related ``Events``, which in turn re-query the ``SearchRestrictions`` when triggered.
+
+This means that e.g. the configuration of ``OTOBOAI::Document::SearchRestrictions`` and ``Ticket::EventModulePost###8300-OTOBOAIIncrementalSynchronization`` are, in this regard, closely coupled. For correct incremental ingestion, please make sure that your specified ``Events`` fully cover your ``SearchRestrictions``, per data source.
+
+For a list of ticket related events, please see the `administrator documentation <>`_. The ``Event`` configuration supports regular expressions, as seen in the default setting:
+
+::
+
+    TicketCreate|Ticket.*Update|TicketMerge|TicketDelete|ArticleCreate|ArticleUpdate
+
+The FAQ ``Event`` configuration, which can be found under ``FAQ::EventModulePost###8300-OTOBOAIIncrementalSynchronization``, currently relies on the optional ``Elasticsearch-FAQ`` package to provide event handling. The only to-date supported events are covered by the default setting:
+
+::
+
+    FAQCreate|FAQUpdate|FAQDelete
 
 
 Answer Generation
