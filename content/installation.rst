@@ -1,12 +1,16 @@
 Installation
 ============
 
-There are two components that interface OTOBO with an LLM:
+This chapter describes the installation of OTOBO AI.
+It guides you through the setup process for both the services and the OTOBO package.
+For further configuration, refer to the specific use case.
+
+There are two components to OTOBO AI:
 
 #. The services ``otobo-ai-services``.
 #. The ``otobo-ai`` OTOBO package.
 
-These installation instructions illustrate their setup.
+These installation instructions illustrate their installation.
 
 
 ``otobo-ai-services`` Docker Compose Stack
@@ -15,7 +19,7 @@ These installation instructions illustrate their setup.
 The ``otobo-ai-services`` are provided as self-contained ``docker compose`` stack.
 There are two docker containers:
 
-``otobo-ai``
+``rag``
     A Chroma database for vector data and webservice to interface with OTOBO
 ``postgres``
     A database holding prepared data
@@ -28,28 +32,8 @@ First, set up the docker compose project:
 .. code-block:: bash
 
     cd /opt
-    git clone git@github.com:RotherOSS/otobo-ai.git
-    cd otobo-ai
-
-Example RAG definitions are provided under ``rag_examples``.
-The ``simple_rag`` is for standalone development.
-If you use this setup with OTOBO, choose the ``tfd_rag1``.
-It supports Tickets (t), FAQ (f) and Documentation (d).
-Copy the RAG description to your RAG definition folder:
-
-.. code-block:: bash
-
-   cp -r rags_examples/tfd_rag1 rags
-
-
-All RAG definitions placed here are exposed at the web service.
-
-.. note::
-   Docker mounts the local ``./rags`` directory into the container as ``src/rags``, enabling external customization.
-   However, a restart of the container is required for the changes to take effect.
-
-You may tune it to your liking (see :doc:`tuning`), or create a new one!
-You *should* at least tailor the prompt to your use case.
+    git clone git@github.com:RotherOSS/otobo-ai-services.git
+    cd otobo-ai-services
 
 Create a ``.env`` file in the root directory to configure environment variables:
 
@@ -59,11 +43,11 @@ Create a ``.env`` file in the root directory to configure environment variables:
 
 Edit the ``.env`` file to set your desired configuration options.
 
-Use Docker Compose to build and run the server:
+Use Docker Compose to run the configured services:
 
 .. code-block:: bash
 
-   docker compose up --build --detach
+   docker compose up --detach
 
 
 
@@ -83,4 +67,4 @@ These are the basic steps:
 #. Configure the auth token into the webservice.
 #. Setup the answer template.
 
-Continue to :doc:`usage`.
+Continue depending on your use case with :doc:`chat` or :doc:`rag`.

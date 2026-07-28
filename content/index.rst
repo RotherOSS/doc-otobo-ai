@@ -5,11 +5,12 @@
 OTOBO AI Manual
 ===============
 
-This is the OTOBO AI (codename "Roboto") Manual.
+This is the OTOBO AI Manual.
 It serves as a reference to help administrators manage and configure the OTOBO AI capabilities effectively.
 
 .. hint::
-   Roboto is currently in closed beta.
+
+   OTOBO AI is currently in closed beta.
    If interested, feel free to `contact us <mailto:hallo@otobo.io>`_.
 
 .. warning::
@@ -21,47 +22,35 @@ It serves as a reference to help administrators manage and configure the OTOBO A
 Overview
 --------
 
-*Roboto implements a RAG (Retrieval-Augmented Generation) system i.e.,
-it is able to generate response suggestions for tickets based on the data from within your OTOBO.*
+OTOBO AI implements two main features:
+
+#. A RAG (Retrieval-Augmented Generation) system which is able to generate response suggestions for tickets based on the data from within your OTOBO.
+#. A chat system that allows you to operate your OTOBO in natural language.
 
 There are two components that interface OTOBO with an LLM:
 
-#. The services ``otobo-ai-services``.
+#. The ``otobo-ai-services``.
 #. The ``otobo-ai`` OTOBO package.
 
 The OTOBO package is the interface between OTOBO and the services.
+It also integrates the required configuration to start a chat session with the LLM (Large Language Model).
 The services hold the data in a format that allows finding similar data related to a request efficiently, and interface with the LLM.
+The chat is accompanied by a MCP (Model Context Protocol) server that allows a LLM to access your data in OTOBO.
+Both features may be used independently, but they can also be combined to provide a more powerful experience.
+Langfuse may be used to monitor the requests and responses of the LLM, and to provide insights into the performance of the system.
+The following diagram illustrates the architecture of OTOBO AI:
 
 ::
 
-                            ┌╌╌╌╌╌╌╌╌╌╌╌╌┐
-      ┌───────────────┐     ┆  Langfuse  ┆
-      │ OTOBO         │     └╌╌╌╌╌┬╌╌╌╌╌╌┘
-      │   ┌──────────┐│  ┌────────┴──────────┐  ┌───────┐
-      │   │ otobo-ai─┼│──┼ otobo-ai-services ┼──┼  LLM  │
-      │   └──────────┘│  └───────────────────┘  └───────┘
-      └───────────────┘
-
-Workflow
-^^^^^^^^
-
-At first, all tickets, FAQ and external documentation are **imported**.
-During this step, the information is scrubbed, chunked, and sent to a small LLM to obtain a numeric vector that describes the presented information.
-This procedure is called embedding.
-Every vector describes a point in high dimensional space.
-Similar information will be close to each other.
-All the vectors and documents are stored in the otobo-ai-services.
-This allows for fast selection of documents that address the same topic.
-
-
-If a new article is created, **generate an answer**:
-
-    #. An embedding is requested for the new article.
-       The resulting vector is used to identify related documents.
-    #. The related documents are injected into the prompt for a larger LLM to generate an answer based on the provided information.
-    #. The generated answer is stored in a Dynamic Field at the article.
-    #. The dynamic field can be referenced in an Answer Template.
-    #. If the user chooses this Answer Template, the generated answer of the LLM will be visible in the compose window.
+                                ┌╌╌╌╌╌╌╌╌╌╌╌╌┐
+          ┌───────────────┐     ┆  Langfuse  ┆
+          │ OTOBO         │     └╌╌╌╌╌┬╌╌╌╌╌╌┘
+          │   ┌──────────┐│  ┌────────┴──────────┐  ┌───────┐
+          │   │ otobo-ai ├┼──┤ otobo-ai-services ├──┤  LLM  │
+          │   └──────────┘│  └───────────────────┘  └───┬───┘
+          └───────┬───────┘ ┌─────────┐ ┌──────┐        │
+                  └─────────┤   MCP   ├─┤ CHAT ├────────┘
+                            └─────────┘ └──────┘
 
 
 
@@ -71,9 +60,14 @@ If a new article is created, **generate an answer**:
    :caption: Contents
 
    installation
-   usage
+   rag
+   chat
    tuning
 
+
+
+License
+-------
 
 This work is copyrighted by ROTHER OSS GmbH (https://otobo.io),
 Oberwalting 31, 94339 Leiblfing, Germany
