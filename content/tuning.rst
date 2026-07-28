@@ -83,7 +83,7 @@ Evaluation
 ----------
 
 In order to evaluate the impact of changes to the quality of system responses, Roboto facilitates scoring of answers generated for an *evaluation set*.
-An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (see :doc:`usage`).
+An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (see :doc:`rag`).
 You may generate a *sample* during import like this:
 
 .. code-block:: bash
