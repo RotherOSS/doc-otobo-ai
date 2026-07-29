@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 15:48+0000\n"
+"POT-Creation-Date: 2026-07-29 16:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,95 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../content/index.rst:64
+#: ../content/chat.rst:2
+msgid "Chat"
+msgstr ""
+
+#: ../content/chat.rst:4
+msgid "OTOBO may interface with an external chat system. The connection is established via the OTOBO webservices and an MCP (Model Context Protocol) server. The following diagram illustrates the connection between OTOBO, the external chat system, and the MCP server:"
+msgstr ""
+
+#: ../content/chat.rst:20
+msgid "The OTOBO-AI package generates a ``session_id`` for the current user and the IP if the MCP and allows to pass it as a link parameter. OTOBO keeps ``session_ids`` bound to IP addresses as per system configuration ``SessionCheckRemoteIP``. Further, it allows to create a link to an external chat service and displays it beside every article. It may pass the ``ticket_id`` and the ``article_id`` as link parameters to the external chat service. This allows an agent to jump into an AI chat out of the ticket context and to pick up the context within the chat. The chat calls the MCP server to interface with the OTOBO webservices, pre-configured by the OTOBO-AI package."
+msgstr ""
+
+#: ../content/chat.rst:29
+msgid "MCP Server"
+msgstr ""
+
+#: ../content/chat.rst:31
+msgid "The OTOBO MCP server serves as a proxy to the OTOBO webservices. It relies on the ``session_id`` passed by the chat service to authenticate as the user at the OTOBO webservices. This allows to keep the access management consistent with the configuration in OTOBO, i.e., a user may only access resources (e.g., tickets) which are accessible to them in OTOBO."
+msgstr ""
+
+#: ../content/chat.rst:35
+msgid "The MCP server is developed in its own repository `otobo-ai-mcp <https://github.com/RotherOSS/otobo-ai-mcp>`_. However, its images are published to Docker Hub and may be used in the OTOBO Docker Compose setup. Example configuration is provided in the ``docker-compose/otobo-ai_mcp.yml`` file of the ``otobo-ai-services``. To activate the MCP server, you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the MCP labeled section."
+msgstr ""
+
+#: ../content/chat.rst:40
+msgid "The MCP server is not exposed to the outside by default. It is meant to serve as an internal interface between the chat service and the OTOBO webservices. If you want to expose the MCP server to the outside, you need to configure a reverse proxy in your OTOBO Docker Compose setup to handle SSL and strongly control access by a firewall."
+msgstr ""
+
+#: ../content/chat.rst:46
+msgid "If you use the MCP server inside a chat service, simply ask the LLM about the capabilities of the MCP server."
+msgstr ""
+
+#: ../content/chat.rst:50
+msgid "Chat Service"
+msgstr ""
+
+#: ../content/chat.rst:52
+msgid "The chat service is interchangeable. However, it needs to be able to pick up the GET parameters, ``session_id`` and the different context ids provided by the OTOBO-AI package and place them to the chat context. It is recommended to separate the chat sessions of different users. Hence, the chat service should be able to handle user authentication. Users may be managed by the chat service itself or by an external identity provider like LDAP or OIDC."
+msgstr ""
+
+#: ../content/chat.rst:58
+msgid "Within the ``otobo-ai-services`` `OpenWebUI <https://openwebui.com>`_ is provided as a reference implementation of a chat service. You may find the Docker Compose file in the repository at ``docker-compose/otobo-ai_openwebui.yml``. The service is pre-configured to share most of the variables declared in the ``.env`` (see: :doc:`installation`). To activate the service you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the chat labeled section."
+msgstr ""
+
+#: ../content/chat.rst:69
+msgid "We may use NGINX of your OTOBO Docker Compose setup to handle SSL and pose as a reverse proxy to the OpenWebUI service on port ``9000``. To do so, you need to configure a custom override. Navigate to your OTOBO Docker Compose project, by default in ``/opt/otobo-docker``. Place a file named ``otobo-override-nginx-openwebui.yml`` in this folder."
+msgstr ""
+
+#: ../content/chat.rst:78
+msgid "Place the following content in the file:"
+msgstr ""
+
+#: ../content/chat.rst:89
+msgid "This will expose the port ``9000`` of the NGINX container to the outside. Further, it will override the NGINX configuration template used to generate the configuration to serve OTOBO."
+msgstr ""
+
+#: ../content/chat.rst:102
+msgid "Now add this block to the end of the file ``etc/nginx/otobo_nginx.conf.template``:"
+msgstr ""
+
+#: ../content/chat.rst:136
+msgid "Now we need to add the file ``otobo-override-nginx-openwebui.yml`` to the end of the ``COMPOSE_FILE`` variable in the ``.env`` file. Then we may reinitialize the NGINX container to apply the changes:"
+msgstr ""
+
+#: ../content/chat.rst:144
+msgid "After start, you may access the OpenWebUI service at ``https://<your-otobo-host>:9000``. For user management setup, see the `documentation of OpenWebUI <https://docs.openwebui.com/features/authentication-access/>`_. Using an OIDC service that is able to handle Single Sign-On (SSO) provides the most seamless experience for the user."
+msgstr ""
+
+#: ../content/chat.rst:148
+msgid "Model configuration heavily depends on the LLM API used (see also the `OpenWebUI documentation <https://docs.openwebui.com/features/workspace/models>`_). At the time of writing, the best result is achieved, by:"
+msgstr ""
+
+#: ../content/chat.rst:151
+msgid "Setting the model to be used to ``public`` so it can be freely accessed."
+msgstr ""
+
+#: ../content/chat.rst:152
+msgid "Set a system prompt that refers to the MCP tool but does not respond with a welcome message in the first response. Even in multiple scenarios we were unable to get the LLM to use the MCP from the system prompt."
+msgstr ""
+
+#: ../content/chat.rst:154
+msgid "You should uncheck everything besides ``file context``, ``status updates``, the built-in tool ``memory``, and the OTOBO MCP. This will provide you with a simple setup; you can expand it as needed."
+msgstr ""
+
+#: ../content/chat.rst:160
+msgid "`LibreChat <https://www.librechat.ai>`_ may also be used as a chat service. While it is more capable out-of-the-box, to handle a larger amount of users, it is more complex to maintain."
+msgstr ""
+
+#: ../content/index.rst:53
 msgid "Contents"
 msgstr ""
 
@@ -25,85 +113,63 @@ msgid "OTOBO AI Manual"
 msgstr ""
 
 #: ../content/index.rst:8
-msgid "This is the OTOBO AI (codename \"Roboto\") Manual. It serves as a reference to help administrators manage and configure the OTOBO AI capabilities effectively."
+msgid "This is the OTOBO AI Manual. It serves as a reference to help administrators manage and configure the OTOBO AI capabilities effectively."
 msgstr ""
 
-#: ../content/index.rst:12
-msgid "Roboto is currently in closed beta. If interested, feel free to `contact us <mailto:hallo@otobo.io>`_."
+#: ../content/index.rst:13
+msgid "OTOBO AI is currently in closed beta. If interested, feel free to `contact us <mailto:hallo@otobo.io>`_."
 msgstr ""
 
-#: ../content/index.rst:17
+#: ../content/index.rst:18
 msgid "Overview"
 msgstr ""
 
-#: ../content/index.rst:19
-msgid "*Roboto implements a RAG (Retrieval-Augmented Generation) system i.e., it is able to generate response suggestions for tickets based on the data from within your OTOBO.*"
+#: ../content/index.rst:20
+msgid "OTOBO AI implements two main features:"
 msgstr ""
 
 #: ../content/index.rst:22
-#: ../content/installation.rst:4
-msgid "There are two components that interface OTOBO with an LLM:"
+msgid "A RAG (Retrieval-Augmented Generation) system which is able to generate response suggestions for tickets based on the data from within your OTOBO."
 msgstr ""
 
-#: ../content/index.rst:24
-#: ../content/installation.rst:6
-msgid "The services ``otobo-ai-services``."
+#: ../content/index.rst:23
+msgid "A chat system that allows you to operate your OTOBO in natural language."
 msgstr ""
 
 #: ../content/index.rst:25
-#: ../content/installation.rst:7
-msgid "The ``otobo-ai`` OTOBO package."
+msgid "There are two components that interface OTOBO with an LLM:"
 msgstr ""
 
 #: ../content/index.rst:27
-msgid "The OTOBO package is the interface between OTOBO and the services. The services hold the data in a format that allows finding similar data related to a request efficiently, and interface with the LLM."
+msgid "The ``otobo-ai-services``."
 msgstr ""
 
-#: ../content/index.rst:41
-msgid "Workflow"
+#: ../content/index.rst:28
+#: ../content/installation.rst:11
+msgid "The ``otobo-ai`` OTOBO package."
 msgstr ""
 
-#: ../content/index.rst:43
-msgid "At first, all tickets, FAQ and external documentation are **imported**. During this step, the information is scrubbed, chunked, and sent to a small LLM to obtain a numeric vector that describes the presented information. This procedure is called embedding. Every vector describes a point in high dimensional space. Similar information will be close to each other. All the vectors and documents are stored in the otobo-ai-services. This allows for fast selection of documents that address the same topic."
+#: ../content/index.rst:30
+msgid "The OTOBO package is the interface between OTOBO and the services. It also integrates the required configuration to start a chat session with the LLM (Large Language Model). The services hold the data in a format that allows finding similar data related to a request efficiently, and interface with the LLM. The chat is accompanied by a MCP (Model Context Protocol) server that allows a LLM to access your data in OTOBO. Both features may be used independently, but they can also be combined to provide a more powerful experience. Langfuse may be used to monitor the requests and responses of the LLM, and to provide insights into the performance of the system. The following diagram illustrates the architecture of OTOBO AI:"
 msgstr ""
 
-#: ../content/index.rst:52
-msgid "If a new article is created, **generate an answer**:"
+#: ../content/index.rst:65
+msgid "License"
 msgstr ""
 
-#: ../content/index.rst:54
-msgid "An embedding is requested for the new article. The resulting vector is used to identify related documents."
-msgstr ""
-
-#: ../content/index.rst:56
-msgid "The related documents are injected into the prompt for a larger LLM to generate an answer based on the provided information."
-msgstr ""
-
-#: ../content/index.rst:57
-msgid "The generated answer is stored in a Dynamic Field at the article."
-msgstr ""
-
-#: ../content/index.rst:58
-msgid "The dynamic field can be referenced in an Answer Template."
-msgstr ""
-
-#: ../content/index.rst:59
-msgid "If the user chooses this Answer Template, the generated answer of the LLM will be visible in the compose window."
-msgstr ""
-
-#: ../content/index.rst:73
+#: ../content/index.rst:67
 msgid "This work is copyrighted by ROTHER OSS GmbH (https://otobo.io), Oberwalting 31, 94339 Leiblfing, Germany"
 msgstr ""
 
-#: ../content/index.rst:76
+#: ../content/index.rst:70
 msgid "Terms and Conditions Rother OSS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"COPYING\"."
 msgstr ""
 
-#: ../content/index.rst:83
+#: ../content/index.rst:77
 msgid "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany."
 msgstr ""
 
-#: ../content/index.rst:86
+#: ../content/index.rst:80
 msgid "Authors: Rother OSS GmbH (https://otobo.de)."
 msgstr ""
 
@@ -111,96 +177,284 @@ msgstr ""
 msgid "Installation"
 msgstr ""
 
-#: ../content/installation.rst:9
-msgid "These installation instructions illustrate their setup."
+#: ../content/installation.rst:4
+msgid "This chapter describes the installation of OTOBO AI. It guides you through the setup process for both the services and the OTOBO package. For further configuration, refer to the specific use case."
+msgstr ""
+
+#: ../content/installation.rst:8
+msgid "There are two components to OTOBO AI:"
+msgstr ""
+
+#: ../content/installation.rst:10
+msgid "The services ``otobo-ai-services``."
 msgstr ""
 
 #: ../content/installation.rst:13
+msgid "These installation instructions illustrate their installation."
+msgstr ""
+
+#: ../content/installation.rst:17
 msgid "``otobo-ai-services`` Docker Compose Stack"
 msgstr ""
 
-#: ../content/installation.rst:15
+#: ../content/installation.rst:19
 msgid "The ``otobo-ai-services`` are provided as self-contained ``docker compose`` stack. There are two docker containers:"
 msgstr ""
 
-#: ../content/installation.rst:18
-msgid "``otobo-ai``"
+#: ../content/installation.rst:22
+msgid "``rag``"
 msgstr ""
 
-#: ../content/installation.rst:19
+#: ../content/installation.rst:23
 msgid "A Chroma database for vector data and webservice to interface with OTOBO"
 msgstr ""
 
-#: ../content/installation.rst:22
+#: ../content/installation.rst:26
 msgid "``postgres``"
 msgstr ""
 
-#: ../content/installation.rst:21
+#: ../content/installation.rst:25
 msgid "A database holding prepared data"
 msgstr ""
 
-#: ../content/installation.rst:24
+#: ../content/installation.rst:28
 msgid "The repository may be found here: https://github.com/RotherOSS/otobo-ai-services"
 msgstr ""
 
-#: ../content/installation.rst:26
+#: ../content/installation.rst:30
 msgid "First, set up the docker compose project:"
 msgstr ""
 
-#: ../content/installation.rst:34
-msgid "Example RAG definitions are provided under ``rag_examples``. The ``simple_rag`` is for standalone development. If you use this setup with OTOBO, choose the ``tfd_rag1``. It supports Tickets (t), FAQ (f) and Documentation (d). Copy the RAG description to your RAG definition folder:"
-msgstr ""
-
-#: ../content/installation.rst:45
-msgid "All RAG definitions placed here are exposed at the web service."
-msgstr ""
-
-#: ../content/installation.rst:48
-msgid "Docker mounts the local ``./rags`` directory into the container as ``src/rags``, enabling external customization. However, a restart of the container is required for the changes to take effect."
-msgstr ""
-
-#: ../content/installation.rst:51
-msgid "You may tune it to your liking (see :doc:`tuning`), or create a new one! You *should* at least tailor the prompt to your use case."
-msgstr ""
-
-#: ../content/installation.rst:54
+#: ../content/installation.rst:38
 msgid "Create a ``.env`` file in the root directory to configure environment variables:"
 msgstr ""
 
-#: ../content/installation.rst:60
+#: ../content/installation.rst:44
 msgid "Edit the ``.env`` file to set your desired configuration options."
 msgstr ""
 
-#: ../content/installation.rst:62
-msgid "Use Docker Compose to build and run the server:"
+#: ../content/installation.rst:46
+msgid "Use Docker Compose to run the configured services:"
 msgstr ""
 
-#: ../content/installation.rst:71
+#: ../content/installation.rst:55
 msgid "``OTOBO-AI`` Package"
 msgstr ""
 
-#: ../content/installation.rst:73
+#: ../content/installation.rst:57
 msgid "The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``. See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO."
 msgstr ""
 
-#: ../content/installation.rst:76
+#: ../content/installation.rst:60
 msgid "Configure the package settings in the system configuration. See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions. The package manual includes all relevant information. You may just search ``OTOBOAI::`` to find all relevant settings. These are the basic steps:"
 msgstr ""
 
-#: ../content/installation.rst:82
+#: ../content/installation.rst:66
 msgid "Select data for import into the RAG stack (what your answers are based on)."
 msgstr ""
 
-#: ../content/installation.rst:83
+#: ../content/installation.rst:67
 msgid "Configure the auth token into the webservice."
 msgstr ""
 
-#: ../content/installation.rst:84
+#: ../content/installation.rst:68
 msgid "Setup the answer template."
 msgstr ""
 
-#: ../content/installation.rst:86
-msgid "Continue to :doc:`usage`."
+#: ../content/installation.rst:70
+msgid "Continue depending on your use case with :doc:`chat` or :doc:`rag`."
+msgstr ""
+
+#: ../content/rag.rst:2
+msgid "Retrieval Augmented Generation (RAG)"
+msgstr ""
+
+#: ../content/rag.rst:4
+msgid "The RAG system allows you to automatically generate answers to customer requests based on the information available in your OTOBO. This document details the configuration and usage of the RAG system."
+msgstr ""
+
+#: ../content/rag.rst:9
+msgid "Workflow"
+msgstr ""
+
+#: ../content/rag.rst:11
+msgid "At first, all tickets, FAQ and external documentation are **imported** in the RAG system. During this step, the information is scrubbed, chunked, and sent to a small LLM to obtain a numeric vector that describes the presented information. This procedure is called *embedding*. Every vector describes a point in high dimensional space. Similar information will be close to each other, while unrelated information will be far apart. All the vectors and documents are stored in the ``otobo-ai-services``. This allows for fast selection of documents that address the same topic."
+msgstr ""
+
+#: ../content/rag.rst:19
+msgid "If a new article is created, **generate an answer**:"
+msgstr ""
+
+#: ../content/rag.rst:21
+msgid "An embedding is requested for the new article. The resulting vector is used to identify related documents."
+msgstr ""
+
+#: ../content/rag.rst:23
+msgid "The related documents are injected into the prompt for a larger LLM to generate an answer based on the provided information."
+msgstr ""
+
+#: ../content/rag.rst:24
+msgid "The generated answer is stored in a Dynamic Field at the article."
+msgstr ""
+
+#: ../content/rag.rst:25
+msgid "The dynamic field can be referenced in an Answer Template."
+msgstr ""
+
+#: ../content/rag.rst:26
+msgid "If the user chooses this Answer Template, the generated answer of the LLM will be visible in the compose window."
+msgstr ""
+
+#: ../content/rag.rst:30
+msgid "Setup"
+msgstr ""
+
+#: ../content/rag.rst:32
+msgid "OTOBO-AI supports multiple RAG definitions, each with its own input data selection, prompt and output queue. While the RAG definition is stored in the ``otobo-ai-services`` docker compose project, input and output is configured in the OTOBO package. These setups are called *pipelines*. You may have multiple separate pipelines, for example one for each department or product you are supporting. Pipelines allow for complete separation of concerns."
+msgstr ""
+
+#: ../content/rag.rst:52
+msgid "To set up such a pipeline, you need to create a RAG definition."
+msgstr ""
+
+#: ../content/rag.rst:55
+msgid "RAG Definition"
+msgstr ""
+
+#: ../content/rag.rst:57
+msgid "Under ``/opt/otobo-ai-services/rag_examples``, example RAG definitions are provided. As a basic template the ``default`` RAG definition is provided. This RAG definition supports Tickets (t), FAQ (f) and Documentation (d). Copy the RAG description to your RAG definition folder:"
+msgstr ""
+
+#: ../content/rag.rst:67
+msgid "All RAG definitions placed here are exposed at the web service. You may tune it to your liking (see :doc:`tuning`), or create a new one! You *should* at least tailor the ``prompts/rag_prompt.txt`` to your use case. Template text is provided in this file."
+msgstr ""
+
+#: ../content/rag.rst:74
+msgid "Docker mounts the local ``./rags`` directory into the container as ``src/rags``, enabling external customization. However, a restart of the container is required for the changes to take effect."
+msgstr ""
+
+#: ../content/rag.rst:79
+msgid "Input & Output Configuration"
+msgstr ""
+
+#: ../content/rag.rst:81
+msgid "Next, you need to configure the input and output of the RAG definition in the OTOBO package. Navigate to the system configuration. For the first RAG definition, the following settings need to be configured:"
+msgstr ""
+
+#: ../content/rag.rst:86
+msgid "``OTOBOAI::Document::SearchRestrictions###0100-Default``"
+msgstr ""
+
+#: ../content/rag.rst:86
+msgid "Location of the documentation to be imported into the RAG system."
+msgstr ""
+
+#: ../content/rag.rst:89
+msgid "``OTOBOAI::FAQ::SearchRestrictions###0100-Default``"
+msgstr ""
+
+#: ../content/rag.rst:89
+msgid "FAQ search restrictions to select the FAQ articles to be imported into the RAG system."
+msgstr ""
+
+#: ../content/rag.rst:92
+msgid "``OTOBOAI::Ticket::SearchRestrictions###0100-Default``"
+msgstr ""
+
+#: ../content/rag.rst:92
+msgid "Ticket search restrictions to select the tickets to be imported into the RAG system."
+msgstr ""
+
+#: ../content/rag.rst:94
+msgid "Search restrictions are able to use any field and restriction from the classic search function (refer to the User Guide for details). You may use the same configuration suffixed ``...###0200-Custom1`` for a second RAG definition, and so on."
+msgstr ""
+
+#: ../content/rag.rst:97
+msgid "To configure which pipeline generate answers for a queue, configure the system setting ``OTOBOAI::QueueToRAGMapping``."
+msgstr ""
+
+#: ../content/rag.rst:101
+msgid "Only text information is indexed by the RAG system and used for answer generation. No documents, pictures, or attachments will be processed."
+msgstr ""
+
+#: ../content/rag.rst:106
+msgid "Initial Data Import"
+msgstr ""
+
+#: ../content/rag.rst:108
+msgid "Place documentation under the path configured in the system setting ``OTOBOAI::Document::SearchRestrictions`` relative to your OTOBO installation."
+msgstr ""
+
+#: ../content/rag.rst:112
+msgid "`Pandoc <https://pandoc.org>`_ may be helpful with data conversion. Beware of index files, they match on every topic and are relatively dense. Beware of files like a license, they are never a match."
+msgstr ""
+
+#: ../content/rag.rst:116
+msgid "And import all the data from command line:"
+msgstr ""
+
+#: ../content/rag.rst:125
+msgid "It is advisable to exclude a portion of the data from import. The import command supports the parameters ``--sample-nth`` and ``--sample``. A generated sample may serve as evaluation set for tuning (see :doc:`tuning`)."
+msgstr ""
+
+#: ../content/rag.rst:129
+msgid "You may verify the import using the command line from the ``rag`` container:"
+msgstr ""
+
+#: ../content/rag.rst:137
+msgid "Incremental Data Ingestion"
+msgstr ""
+
+#: ../content/rag.rst:139
+msgid "The ``OTOBO-AI`` package supports the automatic synchronization of newly added or updated tickets and FAQ items via incremental ingestion. More precisely, OTOBO listens to a pre-defined set of Ticket and FAQ related *Events*, which in turn re-query the ``SearchRestrictions`` when triggered."
+msgstr ""
+
+#: ../content/rag.rst:142
+msgid "This means that the configuration of ``OTOBOAI::Document::SearchRestrictions`` and ``Ticket::EventModulePost###8300-OTOBOAIIncrementalSynchronization`` are closely coupled. For correct incremental ingestion, please make sure that your specified *Events* fully cover your ``SearchRestrictions``, per data source."
+msgstr ""
+
+#: ../content/rag.rst:145
+msgid "For a list of ticket related events, refer to the Developer Manual. The event configuration supports regular expressions, as seen in the default setting:"
+msgstr ""
+
+#: ../content/rag.rst:152
+msgid "The FAQ event configuration is done by ``FAQ::EventModulePost###8300-OTOBOAIIncrementalSynchronization``. Supported events are covered by the default setting:"
+msgstr ""
+
+#: ../content/rag.rst:161
+msgid "On OTOBO 11.0 the FAQ event configuration relies on the optional ``Elasticsearch-FAQ`` package to provide event handling. For 11.1 and later, the FAQ event configuration is supported by default."
+msgstr ""
+
+#: ../content/rag.rst:167
+msgid "Answer Generation"
+msgstr ""
+
+#: ../content/rag.rst:169
+msgid "You may generate answers either prompted by a customer request or manually on-demand."
+msgstr ""
+
+#: ../content/rag.rst:173
+msgid "On-Demand Answers"
+msgstr ""
+
+#: ../content/rag.rst:175
+msgid "There are two options to obtain on-demand answers, either the command line or a new widget in the agent overview. The widget is served by the default RAG. If you handle sensitive information with the default RAG, add a ``Group`` to the setting ``DashboardBackend###0160-OTOBOAIDashboard`` to restrict access to the widget."
+msgstr ""
+
+#: ../content/rag.rst:179
+msgid "The command line may be reached from the command line interface of OTOBO:"
+msgstr ""
+
+#: ../content/rag.rst:188
+msgid "Automatic Answer Suggestions"
+msgstr ""
+
+#: ../content/rag.rst:190
+msgid "However, OTOBO may query the RAG for an answer suggestion whenever it creates a new article. Upon retrieval, the answer is stored in a dynamic field, configured in ``OTOBOAI::DynamicFieldOTOBOAI``. It may be referenced from an answer template. The pre-configured answer template is ``OTOBOAI Answer Template``, and might need to be tweaked to adhere to your use-case. If an agent chooses this answer template, the AI answer is revealed, may be edited by the agent and sent out to the customer."
+msgstr ""
+
+#: ../content/rag.rst:196
+msgid "You may also assign the dynamic field to the ``AgentTicketZoom`` to display the answer at the article and have it accessible without the need to lock the ticket."
 msgstr ""
 
 #: ../content/tuning.rst:2
@@ -272,7 +526,7 @@ msgid "Evaluation"
 msgstr ""
 
 #: ../content/tuning.rst:85
-msgid "In order to evaluate the impact of changes to the quality of system responses, Roboto facilitates scoring of answers generated for an *evaluation set*. An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (see :doc:`usage`). You may generate a *sample* during import like this:"
+msgid "In order to evaluate the impact of changes to the quality of system responses, Roboto facilitates scoring of answers generated for an *evaluation set*. An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (see :doc:`rag`). You may generate a *sample* during import like this:"
 msgstr ""
 
 #: ../content/tuning.rst:93
@@ -293,60 +547,4 @@ msgstr ""
 
 #: ../content/tuning.rst:115
 msgid "You may use ``jq`` and a spreadsheet application for analysis."
-msgstr ""
-
-#: ../content/usage.rst:2
-msgid "Usage"
-msgstr ""
-
-#: ../content/usage.rst:4
-msgid "In order for Roboto to generate answers, you need to import the relevant data. After import answers to articles may be generated and the database may be queried individually."
-msgstr ""
-
-#: ../content/usage.rst:9
-msgid "Data Import"
-msgstr ""
-
-#: ../content/usage.rst:11
-msgid "With the ``OTOBO-AI`` package installed, three data sources may be configured: tickets, FAQ and documents. Tickets and FAQs import selection is guided by their search functions, i.e., you may use any field and restriction from the `classic search function <https://doc.otobo.org/manual/user/11.0/en/content/agent/search/search.html>`_. Place documentation under the path configured in the system setting ``OTOBOAI::Document::SearchRestrictions`` relative to your OTOBO installation. And import all the data from command line:"
-msgstr ""
-
-#: ../content/usage.rst:25
-msgid "Currently plain text documentation is preferred. `Pandoc <https://pandoc.org>`_ may be helpful with data conversion. Beware of index files, they match on every topic and are relatively dense. Beware of files like a license, they are never a match."
-msgstr ""
-
-#: ../content/usage.rst:31
-msgid "It is advisable to exclude a portion of the data from import. The import command supports the parameters ``--sample-nth`` and ``--sample``. A generated sample may serve as evaluation set for tuning (see :doc:`tuning`)."
-msgstr ""
-
-#: ../content/usage.rst:35
-msgid "You may verify the import using the command line from the ``otobo-ai`` container:"
-msgstr ""
-
-#: ../content/usage.rst:43
-msgid "Answer Generation"
-msgstr ""
-
-#: ../content/usage.rst:45
-msgid "You may generate answers either prompted by a customer request or manually on-demand."
-msgstr ""
-
-#: ../content/usage.rst:48
-msgid "On-Demand Answers"
-msgstr ""
-
-#: ../content/usage.rst:50
-msgid "There are two options to obtain on-demand answers, either the command line or a new widget in the agent overview. The command line may be reached from the CLI of OTOBO:"
-msgstr ""
-
-#: ../content/usage.rst:57
-msgid "This option is especially useful if service management requires deep domain knowledge that is not externalized or easily accessible."
-msgstr ""
-
-#: ../content/usage.rst:60
-msgid "Automatic Answer Suggestions"
-msgstr ""
-
-#: ../content/usage.rst:62
-msgid "However, OTOBO may query the LLM for an answer suggestion whenever it creates a new article. Upon retrieval, the answer is stored in a dynamic field, configured in ``OTOBOAI::DynamicFieldOTOBOAI``. It may be referenced from an answer template. The pre-configured answer template is ``OTOBOAI Answer Template``, and might need to be tweaked to adhere to your use-case. If an agent chooses this answer template, the LLM answer is revealed, may be edited by the agent and sent out to the customer."
 msgstr ""
