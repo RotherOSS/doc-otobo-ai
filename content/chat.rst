@@ -121,6 +121,7 @@ Now add this block to the end of the file ``etc/nginx/templates/otobo_nginx.conf
 
            proxy_set_header Upgrade $http_upgrade;
            proxy_set_header Connection "upgrade";
+           proxy_set_header Host $host;
 
            proxy_set_header X-Forwarded-Host $host:$server_port;
            proxy_set_header X-Forwarded-Server $host;
