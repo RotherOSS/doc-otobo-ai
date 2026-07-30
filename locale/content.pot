@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-29 16:08+0000\n"
+"POT-Creation-Date: 2026-07-30 10:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -450,10 +450,10 @@ msgid "Automatic Answer Suggestions"
 msgstr ""
 
 #: ../content/rag.rst:190
-msgid "However, OTOBO may query the RAG for an answer suggestion whenever it creates a new article. Upon retrieval, the answer is stored in a dynamic field, configured in ``OTOBOAI::DynamicFieldOTOBOAI``. It may be referenced from an answer template. The pre-configured answer template is ``OTOBOAI Answer Template``, and might need to be tweaked to adhere to your use-case. If an agent chooses this answer template, the AI answer is revealed, may be edited by the agent and sent out to the customer."
+msgid "However, OTOBO may query the RAG for an answer suggestion whenever a new article is created. Upon retrieval, the answer is stored in a dynamic field, configured in ``OTOBOAI::DynamicFieldOTOBOAI``. It may be referenced from an answer template. The pre-configured answer template is ``OTOBOAI Answer Template``. Assign it to the queues you want to offer RAG answer suggestions to the agents. Refer to the `Admin Manual <https://doc.otobo.org/manual/admin/11.1/en/content/administration-area/ticket-settings/templates-queues.html>`_ for more information. If an agent chooses this answer template, the AI answer is revealed, may be edited by the agent and sent out to the customer."
 msgstr ""
 
-#: ../content/rag.rst:196
+#: ../content/rag.rst:200
 msgid "You may also assign the dynamic field to the ``AgentTicketZoom`` to display the answer at the article and have it accessible without the need to lock the ticket."
 msgstr ""
 
