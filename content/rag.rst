@@ -187,13 +187,17 @@ The command line may be reached from the command line interface of OTOBO:
 Automatic Answer Suggestions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-However, OTOBO may query the RAG for an answer suggestion whenever it creates a new article.
+However, OTOBO may query the RAG for an answer suggestion whenever a new article is created.
 Upon retrieval, the answer is stored in a dynamic field, configured in ``OTOBOAI::DynamicFieldOTOBOAI``.
 It may be referenced from an answer template.
-The pre-configured answer template is ``OTOBOAI Answer Template``, and might need to be tweaked to adhere to your use-case.
+The pre-configured answer template is ``OTOBOAI Answer Template``.
+Assign it to the queues you want to offer RAG answer suggestions to the agents.
+Refer to the `Admin Manual <https://doc.otobo.org/manual/admin/11.1/en/content/administration-area/ticket-settings/templates-queues.html>`_ for more information.
 If an agent chooses this answer template, the AI answer is revealed, may be edited by the agent and sent out to the customer.
 
-You may also assign the dynamic field to the ``AgentTicketZoom`` to display the answer at the article and have it accessible without the need to lock the ticket.
+.. note::
+
+   You may also assign the dynamic field to the ``AgentTicketZoom`` to display the answer at the article and have it accessible without the need to lock the ticket.
 
 
 
