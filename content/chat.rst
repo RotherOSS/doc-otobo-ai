@@ -84,7 +84,7 @@ Place the following content in the file:
        ports:
          - "9000:9000"
        volumes:
-         - ../etc/nginx/otobo_nginx.conf.template:/etc/nginx/templates/otobo_nginx.conf.template:ro
+         - ../etc/nginx/templates/otobo_nginx.conf.template:/etc/nginx/templates/otobo_nginx.conf.template:ro
 
 This will expose the port ``9000`` of the NGINX container to the outside.
 Further, it will override the NGINX configuration template used to generate the configuration to serve OTOBO.
@@ -94,12 +94,12 @@ Further, it will override the NGINX configuration template used to generate the 
    cd /opt/otobo-docker
 
    # create the file location
-   mkdir -p /etc/nginx
+   mkdir -p etc/nginx/templates
 
    # obtain a copy of the template from the NGINX container
-   docker compose cp nginx:/etc/nginx/templates/otobo_nginx.conf.template etc/nginx
+   docker compose cp nginx:/etc/nginx/templates/otobo_nginx.conf.template etc/nginx/templates/otobo_nginx.conf.template
 
-Now add this block to the end of the file ``etc/nginx/otobo_nginx.conf.template``:
+Now add this block to the end of the file ``etc/nginx/templates/otobo_nginx.conf.template``:
 
 .. code-block:: nginx
 
