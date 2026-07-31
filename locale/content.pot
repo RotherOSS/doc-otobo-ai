@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-30 15:12+0000\n"
+"POT-Creation-Date: 2026-07-31 11:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,39 +68,35 @@ msgstr ""
 msgid "Place the following content in the file:"
 msgstr ""
 
-#: ../content/chat.rst:89
-msgid "This will expose the port ``9000`` of the NGINX container to the outside. Further, it will override the NGINX configuration template used to generate the configuration to serve OTOBO."
+#: ../content/chat.rst:88
+msgid "This will expose the port ``9000`` of the NGINX container to the outside. Further, you need to override the NGINX configuration template used to generate the configuration to serve OTOBO. Please refer to the `OTOBO Installation Guide <https://doc.otobo.org/manual/installation/11.1/en/content/installation/installation-docker.html#custom-configuration-of-the-nginx-webproxy>`_ for details. Add this block to the end of the exposed template:"
 msgstr ""
 
-#: ../content/chat.rst:102
-msgid "Now add this block to the end of the file ``etc/nginx/templates/otobo_nginx.conf.template``:"
-msgstr ""
-
-#: ../content/chat.rst:137
+#: ../content/chat.rst:126
 msgid "Now we need to add the file ``otobo-override-nginx-openwebui.yml`` to the end of the ``COMPOSE_FILE`` variable in the ``.env`` file. Then we may reinitialize the NGINX container to apply the changes:"
 msgstr ""
 
-#: ../content/chat.rst:145
+#: ../content/chat.rst:134
 msgid "After start, you may access the OpenWebUI service at ``https://<your-otobo-host>:9000``. For user management setup, see the `documentation of OpenWebUI <https://docs.openwebui.com/features/authentication-access/>`_. Using an OIDC service that is able to handle Single Sign-On (SSO) provides the most seamless experience for the user."
 msgstr ""
 
-#: ../content/chat.rst:149
+#: ../content/chat.rst:138
 msgid "Model configuration heavily depends on the LLM API used (see also the `OpenWebUI documentation <https://docs.openwebui.com/features/workspace/models>`_). At the time of writing, the best result is achieved, by:"
 msgstr ""
 
-#: ../content/chat.rst:152
+#: ../content/chat.rst:141
 msgid "Setting the model to be used to ``public`` so it can be freely accessed."
 msgstr ""
 
-#: ../content/chat.rst:153
+#: ../content/chat.rst:142
 msgid "Set a system prompt that refers to the MCP tool but does not respond with a welcome message in the first response. Even in multiple scenarios we were unable to get the LLM to use the MCP from the system prompt."
 msgstr ""
 
-#: ../content/chat.rst:155
+#: ../content/chat.rst:144
 msgid "You should uncheck everything besides ``file context``, ``status updates``, the built-in tool ``memory``, and the OTOBO MCP. This will provide you with a simple setup; you can expand it as needed."
 msgstr ""
 
-#: ../content/chat.rst:161
+#: ../content/chat.rst:150
 msgid "`LibreChat <https://www.librechat.ai>`_ may also be used as a chat service. While it is more capable out-of-the-box, to handle a larger amount of users, it is more complex to maintain."
 msgstr ""
 
