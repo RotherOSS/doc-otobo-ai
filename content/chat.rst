@@ -73,7 +73,7 @@ Place a file named ``otobo-override-nginx-openwebui.yml`` in this folder.
 
 .. code-block:: bash
 
-   touch /opt/otobo-docker/otobo-override-nginx-openwebui.yml
+   touch /opt/otobo-docker/docker-compose/otobo-override-nginx-openwebui.yml
 
 Place the following content in the file:
 
@@ -83,23 +83,12 @@ Place the following content in the file:
      nginx:
        ports:
          - "9000:9000"
-       volumes:
-         - ../etc/nginx/templates/otobo_nginx.conf.template:/etc/nginx/templates/otobo_nginx.conf.template:ro
+
 
 This will expose the port ``9000`` of the NGINX container to the outside.
-Further, it will override the NGINX configuration template used to generate the configuration to serve OTOBO.
-
-.. code-block:: bash
-
-   cd /opt/otobo-docker
-
-   # create the file location
-   mkdir -p etc/nginx/templates
-
-   # obtain a copy of the template from the NGINX container
-   docker compose cp nginx:/etc/nginx/templates/otobo_nginx.conf.template etc/nginx/templates/otobo_nginx.conf.template
-
-Now add this block to the end of the file ``etc/nginx/templates/otobo_nginx.conf.template``:
+Further, you need to override the NGINX configuration template used to generate the configuration to serve OTOBO.
+Please refer to the `OTOBO Installation Guide <https://doc.otobo.org/manual/installation/11.1/en/content/installation/installation-docker.html#custom-configuration-of-the-nginx-webproxy>`_ for details.
+Add this block to the end of the exposed template:
 
 .. code-block:: nginx
 
