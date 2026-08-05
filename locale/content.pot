@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-31 15:05+0000\n"
+"POT-Creation-Date: 2026-08-05 09:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,7 +406,7 @@ msgid "Incremental Data Ingestion"
 msgstr ""
 
 #: ../content/rag.rst:139
-msgid "The ``OTOBO-AI`` package supports the automatic synchronization of newly added or updated tickets and FAQ items via incremental ingestion. More precisely, OTOBO listens to a pre-defined set of Ticket and FAQ related *Events*, which in turn re-query the ``SearchRestrictions`` when triggered."
+msgid "The ``OTOBO-AI`` package supports the automatic synchronization of newly added or updated tickets and FAQ items via incremental ingestion. More precisely, OTOBO listens to a pre-defined set of Ticket and FAQ related *Events*, which in turn re-query the ``SearchRestrictions`` when triggered. This functionlity is **disabled by default**."
 msgstr ""
 
 #: ../content/rag.rst:142
