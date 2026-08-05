@@ -137,7 +137,7 @@ Incremental Data Ingestion
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``OTOBO-AI`` package supports the automatic synchronization of newly added or updated tickets and FAQ items via incremental ingestion.
-More precisely, OTOBO listens to a pre-defined set of Ticket and FAQ related *Events*, which in turn re-query the ``SearchRestrictions`` when triggered.
+More precisely, OTOBO listens to a pre-defined set of Ticket and FAQ related *Events*, which in turn re-query the ``SearchRestrictions`` when triggered. This functionlity is **disabled by default**.
 
 This means that the configuration of ``OTOBOAI::Document::SearchRestrictions`` and ``Ticket::EventModulePost###8300-OTOBOAIIncrementalSynchronization`` are closely coupled.
 For correct incremental ingestion, please make sure that your specified *Events* fully cover your ``SearchRestrictions``, per data source.
@@ -147,7 +147,7 @@ The event configuration supports regular expressions, as seen in the default set
 
 ::
 
-    TicketCreate|Ticket.*Update|TicketMerge|TicketDelete|ArticleCreate|ArticleUpdate
+    TicketCreate|Ticket.*Update|TicketMerge|TicketDelete|ArticleCreate|ArticleUpdate|ArticleEdit
 
 The FAQ event configuration is done by ``FAQ::EventModulePost###8300-OTOBOAIIncrementalSynchronization``.
 Supported events are covered by the default setting:
