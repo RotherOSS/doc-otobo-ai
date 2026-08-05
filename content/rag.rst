@@ -158,7 +158,8 @@ Supported events are covered by the default setting:
 
 .. attention::
 
-   This functionlity is **disabled by default**. It also requires the OTOBO daemon to run.
+   This functionality is **disabled by default**. It also relies on a running OTOBO Daemon, as it handles the asynchronous ingestion calls.
+
    On OTOBO 11.0 the FAQ event configuration relies on the optional ``Elasticsearch-FAQ`` package to provide event handling.
    For 11.1 and later, the FAQ event configuration is supported by default.
 
