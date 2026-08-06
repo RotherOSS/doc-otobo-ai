@@ -5,7 +5,7 @@ Every OTOBO is different.
 And so is the information processed by it.
 To account for this fact, this setup is as flexible as possible.
 There are a `lot` of options when tuning this setup.
-If you would like to dig into the answer generation process, it is recommended to hook a `Langfuse <https://www.langfuse.com/>`_ to your RAG setup.
+If you would like to dig into the answer generation process, it is recommended to hook a `Langfuse <https://langfuse.com/>`_ to your RAG setup.
 This chapter addresses the various tuning options available.
 
 Prompt
