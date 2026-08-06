@@ -35,7 +35,22 @@ These setups are called *pipelines*.
 You may have multiple separate pipelines, for example one for each department or product you are supporting.
 Pipelines allow for complete separation of concerns.
 
-::
+.. raw:: html
+
+   <style>
+  .centered-code {
+       display: flex;
+       justify-content: center;
+   }
+   .centered-code pre {
+       display: table;
+       margin: 0 auto;
+   }
+   </style>
+
+.. rst-class:: centered-code
+
+.. code-block:: none
 
   ┌───────────────┐                          ┌─────────┐
   │ ticket search ┼───┐                  ┌───► queue 1 │

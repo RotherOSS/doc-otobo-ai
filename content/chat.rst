@@ -5,7 +5,22 @@ OTOBO may interface with an external chat system.
 The connection is established via the OTOBO webservices and an MCP (Model Context Protocol) server.
 The following diagram illustrates the connection between OTOBO, the external chat system, and the MCP server:
 
-::
+.. raw:: html
+
+   <style>
+  .centered-code {
+       display: flex;
+       justify-content: center;
+   }
+   .centered-code pre {
+       display: table;
+       margin: 0 auto;
+   }
+   </style>
+
+.. rst-class:: centered-code
+
+.. code-block:: none
 
                        ┌───────┐
   link:         ┌──────┼ OTOBO ◄──────┐
