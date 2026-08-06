@@ -31,6 +31,8 @@ The following diagram illustrates the connection between OTOBO, the external cha
              └──────┘   session_id └─────┘
                         [...]
 
+.. centered:: *Dataflow within the OTOBO AI chat setup*
+
 
 The OTOBO-AI package generates a ``session_id`` for the current user and the IP if the MCP and allows to pass it as a link parameter.
 OTOBO keeps ``session_ids`` bound to IP addresses as per system configuration ``SessionCheckRemoteIP``.
