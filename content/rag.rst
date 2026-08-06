@@ -63,6 +63,8 @@ Pipelines allow for complete separation of concerns.
      └────────────┘        └────────┘        └─────────┘
         INPUT                                  OUTPUT
 
+.. centered:: *RAG Pipeline in OTOBO*
+
 
 To set up such a pipeline, you need to create a RAG definition.
 

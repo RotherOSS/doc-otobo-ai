@@ -67,6 +67,7 @@ The following diagram illustrates the architecture of OTOBO AI:
                       └─────────┤   MCP   ├─┤ CHAT ├──┘
                                 └─────────┘ └──────┘
 
+.. centered:: *Architecture Overview for OTOBO AI*
 
 
 
