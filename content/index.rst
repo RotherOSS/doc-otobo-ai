@@ -40,17 +40,32 @@ Both features may be used independently, but they can also be combined to provid
 Langfuse may be used to monitor the requests and responses of the LLM, and to provide insights into the performance of the system.
 The following diagram illustrates the architecture of OTOBO AI:
 
-::
+.. raw:: html
 
-                                ┌╌╌╌╌╌╌╌╌╌╌╌╌┐
-          ┌───────────────┐     ┆  Langfuse  ┆
-          │ OTOBO         │     └╌╌╌╌╌┬╌╌╌╌╌╌┘
-          │   ┌──────────┐│  ┌────────┴──────────┐  ┌───────┐
-          │   │ otobo-ai ├┼──┤ otobo-ai-services ├──┤  LLM  │
-          │   └──────────┘│  └───────────────────┘  └───┬───┘
-          └───────┬───────┘ ┌─────────┐ ┌──────┐        │
-                  └─────────┤   MCP   ├─┤ CHAT ├────────┘
-                            └─────────┘ └──────┘
+   <style>
+  .centered-code {
+       display: flex;
+       justify-content: center;
+   }
+   .centered-code pre {
+       display: table;
+       margin: 0 auto;
+   }
+   </style>
+
+.. rst-class:: centered-code
+
+.. code-block:: none
+
+                                 ┌────┐    ┌╌╌╌╌╌╌╌╌╌╌┐
+              ┌───────────────┐  │ DB ├─┐ ┌┤ Langfuse ┆
+              │ OTOBO         │  └────┘ │ │└╌╌╌╌╌╌╌╌╌╌┘
+              │   ┌──────────┐│     ┌───┴─┴───┐   ┌───────┐
+              │   │ otobo-ai ├┼─────┤   RAG   ├───┤  LLM  │
+              │   └──────────┘│     └─────────┘   └───┬───┘
+              └───────┬───────┘ ┌─────────┐ ┌──────┐  │
+                      └─────────┤   MCP   ├─┤ CHAT ├──┘
+                                └─────────┘ └──────┘
 
 
 
