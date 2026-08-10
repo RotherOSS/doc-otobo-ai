@@ -178,7 +178,9 @@ A prompt like this can be used to guide the LLM's behavior:
 
    START
 
-   Start every conversation by responding with: "Hello, my name is Harry. How can I help you?"
+   Start every conversation by responding with:
+   "Hello, my name is Harry.
+   How can I help you?"
 
 
 .. note::
