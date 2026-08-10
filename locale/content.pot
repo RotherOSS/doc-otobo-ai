@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-06 10:15+0000\n"
+"POT-Creation-Date: 2026-08-10 06:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,14 +93,18 @@ msgid "Setting the model to be used to ``public`` so it can be freely accessed."
 msgstr ""
 
 #: ../content/chat.rst:160
-msgid "Set a system prompt that refers to the MCP tool but does not respond with a welcome message in the first response. Even in multiple scenarios we were unable to get the LLM to use the MCP from the system prompt."
+msgid "Set a system prompt that refers to the MCP tool but does not respond with a welcome message in the first response. Refer to the example below. Even in multiple scenarios we were unable to get the LLM to use the MCP from the system prompt."
 msgstr ""
 
-#: ../content/chat.rst:162
+#: ../content/chat.rst:163
 msgid "You should uncheck everything besides ``file context``, ``status updates``, the built-in tool ``memory``, and the OTOBO MCP. This will provide you with a simple setup; you can expand it as needed."
 msgstr ""
 
-#: ../content/chat.rst:168
+#: ../content/chat.rst:167
+msgid "A prompt like this can be used to guide the LLM's behavior:"
+msgstr ""
+
+#: ../content/chat.rst:187
 msgid "`LibreChat <https://www.librechat.ai>`_ may also be used as a chat service. While it is more capable out-of-the-box, to handle a larger amount of users, it is more complex to maintain."
 msgstr ""
 
