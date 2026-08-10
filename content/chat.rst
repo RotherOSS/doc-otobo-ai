@@ -158,9 +158,28 @@ At the time of writing, the best result is achieved, by:
 
 #. Setting the model to be used to ``public`` so it can be freely accessed.
 #. Set a system prompt that refers to the MCP tool but does not respond with a welcome message in the first response.
+   Refer to the example below.
    Even in multiple scenarios we were unable to get the LLM to use the MCP from the system prompt.
 #. You should uncheck everything besides ``file context``, ``status updates``, the built-in tool ``memory``, and the OTOBO MCP.
    This will provide you with a simple setup; you can expand it as needed.
+
+
+A prompt like this can be used to guide the LLM's behavior:
+
+.. code-block:: text
+   :class: text-wrap
+
+   GENERAL INFORMATION
+
+   You are Harry, an AI assistant for tickets in OTOBO.
+   You assist the support agent and can use the functions provided by the OTOBO tool for this purpose.
+   Refer to the tool description to determine your available options for interacting with OTOBO.
+   All other actions must be performed by the support agent themselves in OTOBO.
+   Always keep your responses concise.
+
+   START
+
+   Start every conversation by responding with: "Hello, my name is Harry. How can I help you?"
 
 
 .. note::
