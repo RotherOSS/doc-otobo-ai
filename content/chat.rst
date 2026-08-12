@@ -111,34 +111,43 @@ Add this block to the end of the exposed template:
 .. code-block:: nginx
 
    server {
-       listen 9000 ssl;
-       listen [::]:9000 ssl;
-       http2 on;
+        listen 9000 ssl;
+        listen [::]:9000 ssl;
+        http2 on;
 
-       include snippets/ssl-params.conf;
-       ssl_certificate     ${OTOBO_NGINX_SSL_CERTIFICATE};
-       ssl_certificate_key ${OTOBO_NGINX_SSL_CERTIFICATE_KEY};
+        include snippets/ssl-params.conf;
+        ssl_certificate     ${OTOBO_NGINX_SSL_CERTIFICATE};
+        ssl_certificate_key ${OTOBO_NGINX_SSL_CERTIFICATE_KEY};
 
-       server_name  localhost;
+        server_name _;
 
-       client_max_body_size 1G;
+        client_max_body_size 1G;
 
-       location / {
-           proxy_http_version 1.1;
+        resolver 127.0.0.11 valid=10s ipv6=off;
+        resolver_timeout 3s;
 
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection "upgrade";
-           proxy_set_header Host $host;
+        location / {
 
-           proxy_set_header X-Forwarded-Host $host:$server_port;
-           proxy_set_header X-Forwarded-Server $host;
-           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-           proxy_set_header X-Forwarded-Proto $scheme;
-           proxy_pass       http://chat:8080/;
+                set $upstream chat;
 
-           proxy_read_timeout 300s;
-           proxy_send_timeout 300s;
-       }
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-Host $host:$server_port;
+                proxy_set_header X-Forwarded-Server $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+
+                proxy_http_version 1.1;
+                proxy_redirect off;
+                proxy_buffering off;
+                proxy_cache off;
+                proxy_read_timeout  600s;
+                proxy_send_timeout  600s;
+                proxy_connect_timeout 10s;
+
+                proxy_pass       http://$upstream:8080;
+        }
    }
 
 Now we need to add the file ``otobo-override-nginx-openwebui.yml`` to the end of the ``COMPOSE_FILE`` variable in the ``.env`` file.
