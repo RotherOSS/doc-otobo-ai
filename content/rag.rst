@@ -96,7 +96,8 @@ You may use the same configuration suffixed ``...###0200-Custom1`` for a second 
 
 .. attention::
 
-   The default values in ``OTOBOAI::Ticket::SearchRestrictions###0100-Default`` will not select typical ticket data to be imported into the AI. it is mandatory to add here valid values for Queues, StateTypes etc.
+   The default values in ``OTOBOAI::Ticket::SearchRestrictions###0100-Default`` will not select typical ticket data to be imported into the AI.
+   It is mandatory to add here valid values for Queues, StateTypes etc.
    Also, the settings ``TicketCloseTimeNewerMinutes`` and ``TicketCloseTimeOlderMinutes`` need to configured to make sure your tickets are imported into the AI.
 
    The same applies to the settings ``OTOBOAI::Document::SearchRestrictions###0100-Default`` and ``OTOBOAI::FAQ::SearchRestrictions###0100-Default``, which need to be adjusted in order to import your data correctly.

@@ -35,7 +35,8 @@ This allows to keep the access management consistent with the configuration in O
 The MCP server is developed in its own repository `otobo-ai-mcp <https://github.com/RotherOSS/otobo-ai-mcp>`_.
 However, its images are published to Docker Hub and may be used in the OTOBO Docker Compose setup.
 Example configuration is provided in the ``docker-compose/otobo-ai_mcp.yml`` file of the ``otobo-ai-services``.
-To activate the MCP server, you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the MCP labeled section. To do so, change the line ``#compose/otobo-ai_mcp.yml`` to ``otobo-ai_mcp.yml`` in the ``.env``-file.
+To activate the MCP server, you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the MCP labeled section.
+To do so, change the line ``#compose/otobo-ai_mcp.yml`` to ``otobo-ai_mcp.yml`` in the ``.env``-file.
 
 The MCP server is not exposed to the outside by default.
 It is meant to serve as an internal interface between the chat service and the OTOBO webservices.
