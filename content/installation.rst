@@ -32,7 +32,7 @@ First, set up the docker compose project:
 .. code-block:: bash
 
     cd /opt
-    git clone git@github.com:RotherOSS/otobo-ai-services.git
+    ggit clone https://github.com/RotherOSS/otobo-ai-services.git
     cd otobo-ai-services
 
 Create a ``.env`` file in the root directory to configure environment variables:
@@ -42,6 +42,15 @@ Create a ``.env`` file in the root directory to configure environment variables:
     cp .docker_compose_env_ai .env
 
 Edit the ``.env`` file to set your desired configuration options.
+
+As a minimum, configure these settings:
+   ``OTOBO_AI_API_KEY`` = *your API key*
+
+   ``OTOBO_AI_LLM_API_KEY`` = *your API key*
+
+   ``OTOBO_AI_LLM_HOST`` = *https://roboto.otobo.io:4000*
+
+   ``OTOBO_MCP_PUBLIC_URL`` = *https://your-otobo-host>/otobo/index.pl*
 
 Use Docker Compose to run the configured services:
 
@@ -53,6 +62,8 @@ Use Docker Compose to run the configured services:
 
 ``OTOBO-AI`` Package
 --------------------
+
+Refer here to the the `Retrieval Augmented Generation (RAG) <https://doc.otobo.org/manual/ai/11.1/en/content/rag.html#retrieval-augmented-generation-rag>`__ documentation.
 
 The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``.
 See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO.
