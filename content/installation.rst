@@ -32,7 +32,7 @@ First, set up the docker compose project:
 .. code-block:: bash
 
     cd /opt
-    ggit clone https://github.com/RotherOSS/otobo-ai-services.git
+    git clone https://github.com/RotherOSS/otobo-ai-services.git
     cd otobo-ai-services
 
 Create a ``.env`` file in the root directory to configure environment variables:
