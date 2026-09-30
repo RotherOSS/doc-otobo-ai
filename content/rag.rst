@@ -101,7 +101,8 @@ You may use the same configuration suffixed ``...###0200-Custom1`` for a second 
    Also, the settings ``TicketCloseTimeNewerMinutes`` and ``TicketCloseTimeOlderMinutes`` need to configured to make sure your tickets are imported into the AI.
 
    The same applies to the settings ``OTOBOAI::Document::SearchRestrictions###0100-Default`` and ``OTOBOAI::FAQ::SearchRestrictions###0100-Default``, which need to be adjusted in order to import your data correctly.
-
+   The default values in ``OTOBOAI::Ticket::SearchRestrictions###0100-Default`` are merely of an illustrative nature will most certainly not yield in data imported into the RAG system.
+   You need to edit these values to account for your configuration of Queues, StateTypes, etc.
 To configure which pipeline generate answers for a queue, configure the system setting ``OTOBOAI::QueueToRAGMapping``.
 
 .. note::
