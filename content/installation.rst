@@ -13,6 +13,20 @@ There are two components to OTOBO AI:
 These installation instructions illustrate their installation.
 
 
+Requirements
+------------
+
+In order to setup the OTOBO AI solution, you need to meet the following requirements:
+
+#. The host you run the OTOBO AI services on needs 20GB free disk space for tooling itself, as well as free disk space to hold your OTOBO plain text data.
+   Further, you need at least 2GB RAM and 2 spare CPU cores.
+   Requirements grow with the number of active Agents and Article creation volume.
+#. You need connection to at least two LLMs by OpenAI compatible API.
+   For the RAG you need an embedding model and a generation model.
+   For the chat feature you need a generation model with tool calling capability.
+
+
+
 ``otobo-ai-services`` Docker Compose Stack
 ------------------------------------------
 
