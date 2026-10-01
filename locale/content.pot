@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-31 06:57+0000\n"
+"POT-Creation-Date: 2026-10-01 13:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -202,74 +202,90 @@ msgid "These installation instructions illustrate their installation."
 msgstr ""
 
 #: ../content/installation.rst:17
-msgid "``otobo-ai-services`` Docker Compose Stack"
+msgid "Requirements"
 msgstr ""
 
 #: ../content/installation.rst:19
+msgid "In order to setup the OTOBO AI solution, you need to meet the following requirements:"
+msgstr ""
+
+#: ../content/installation.rst:21
+msgid "The host you run the OTOBO AI services on needs 20GB free disk space for tooling itself, as well as free disk space to hold your OTOBO plain text data. Further, you need at least 2GB RAM and 2 spare CPU cores. Requirements grow with the number of active Agents and Article creation volume."
+msgstr ""
+
+#: ../content/installation.rst:24
+msgid "You need connection to at least two LLMs by OpenAI compatible API. For the RAG you need an embedding model and a generation model. For the chat feature you need a generation model with tool calling capability."
+msgstr ""
+
+#: ../content/installation.rst:31
+msgid "``otobo-ai-services`` Docker Compose Stack"
+msgstr ""
+
+#: ../content/installation.rst:33
 msgid "The ``otobo-ai-services`` are provided as self-contained ``docker compose`` stack. There are two docker containers:"
 msgstr ""
 
-#: ../content/installation.rst:22
+#: ../content/installation.rst:36
 msgid "``rag``"
 msgstr ""
 
-#: ../content/installation.rst:23
+#: ../content/installation.rst:37
 msgid "A Chroma database for vector data and webservice to interface with OTOBO"
 msgstr ""
 
-#: ../content/installation.rst:26
+#: ../content/installation.rst:40
 msgid "``postgres``"
 msgstr ""
 
-#: ../content/installation.rst:25
+#: ../content/installation.rst:39
 msgid "A database holding prepared data"
 msgstr ""
 
-#: ../content/installation.rst:28
+#: ../content/installation.rst:42
 msgid "The repository may be found here: https://github.com/RotherOSS/otobo-ai-services"
 msgstr ""
 
-#: ../content/installation.rst:30
+#: ../content/installation.rst:44
 msgid "First, set up the docker compose project:"
 msgstr ""
 
-#: ../content/installation.rst:38
+#: ../content/installation.rst:52
 msgid "Create a ``.env`` file in the root directory to configure environment variables:"
 msgstr ""
 
-#: ../content/installation.rst:44
+#: ../content/installation.rst:58
 msgid "Edit the ``.env`` file to set your desired configuration options."
 msgstr ""
 
-#: ../content/installation.rst:46
+#: ../content/installation.rst:60
 msgid "Use Docker Compose to run the configured services:"
 msgstr ""
 
-#: ../content/installation.rst:55
+#: ../content/installation.rst:69
 msgid "``OTOBO-AI`` Package"
 msgstr ""
 
-#: ../content/installation.rst:57
+#: ../content/installation.rst:71
 msgid "The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``. See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO."
 msgstr ""
 
-#: ../content/installation.rst:60
+#: ../content/installation.rst:74
 msgid "Configure the package settings in the system configuration. See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions. The package manual includes all relevant information. You may just search ``OTOBOAI::`` to find all relevant settings. These are the basic steps:"
 msgstr ""
 
-#: ../content/installation.rst:66
+#: ../content/installation.rst:80
 msgid "Select data for import into the RAG stack (what your answers are based on)."
 msgstr ""
 
-#: ../content/installation.rst:67
+#: ../content/installation.rst:81
 msgid "Configure the auth token into the webservice."
 msgstr ""
 
-#: ../content/installation.rst:68
+#: ../content/installation.rst:82
 msgid "Setup the answer template."
 msgstr ""
 
-#: ../content/installation.rst:70
+#: ../content/installation.rst:84
 msgid "Continue depending on your use case with :doc:`chat` or :doc:`rag`."
 msgstr ""
 
