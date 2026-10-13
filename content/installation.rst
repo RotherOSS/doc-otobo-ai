@@ -57,15 +57,6 @@ Create a ``.env`` file in the root directory to configure environment variables:
 
 Edit the ``.env`` file to set your desired configuration options.
 
-As a minimum, configure these settings:
-   ``OTOBO_AI_API_KEY`` = *your API key*
-
-   ``OTOBO_AI_LLM_API_KEY`` = *your API key*
-
-   ``OTOBO_AI_LLM_HOST`` = *https://roboto.otobo.io:4000*
-
-   ``OTOBO_MCP_PUBLIC_URL`` = *https://your-otobo-host>/otobo/index.pl*
-
 Use Docker Compose to run the configured services:
 
 .. code-block:: bash
