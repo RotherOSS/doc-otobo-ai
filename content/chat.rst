@@ -106,7 +106,7 @@ Place the following content in the file created above:
 This will expose the port ``9000`` of the NGINX container to the outside.
 Further, you need to override the NGINX configuration template used to generate the configuration to serve OTOBO.
 Please refer to the `OTOBO Installation Guide <https://doc.otobo.org/manual/installation/11.0/en/content/installation/installation-docker.html#custom-configuration-of-the-nginx-webproxy>`_ for details.
-Add this block to the end of the exposed template, which is located in the NGINX container's file system in ``/etc/nginx/templates/otobo_nginx.conf.template``:
+Add this block to the end of the exposed template:
 
 
 .. code-block:: nginx
