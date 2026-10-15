@@ -68,7 +68,6 @@ Use Docker Compose to run the configured services:
 ``OTOBO-AI`` Package
 --------------------
 
-Refer here to the the `Retrieval Augmented Generation (RAG) <https://doc.otobo.org/manual/ai/11.1/en/content/rag.html#retrieval-augmented-generation-rag>`__ documentation.
 
 The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``.
 See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO.
