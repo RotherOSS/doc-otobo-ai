@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-01 13:38+0000\n"
+"POT-Creation-Date: 2026-10-15 07:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgid "We may use NGINX of your OTOBO Docker Compose setup to handle SSL and pos
 msgstr ""
 
 #: ../content/chat.rst:95
-msgid "Place the following content in the file:"
+msgid "Place the following content in the file created above:"
 msgstr ""
 
 #: ../content/chat.rst:105
@@ -269,27 +269,27 @@ msgstr ""
 msgid "``OTOBO-AI`` Package"
 msgstr ""
 
-#: ../content/installation.rst:71
+#: ../content/installation.rst:72
 msgid "The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``. See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO."
 msgstr ""
 
-#: ../content/installation.rst:74
+#: ../content/installation.rst:75
 msgid "Configure the package settings in the system configuration. See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions. The package manual includes all relevant information. You may just search ``OTOBOAI::`` to find all relevant settings. These are the basic steps:"
 msgstr ""
 
-#: ../content/installation.rst:80
+#: ../content/installation.rst:81
 msgid "Select data for import into the RAG stack (what your answers are based on)."
 msgstr ""
 
-#: ../content/installation.rst:81
+#: ../content/installation.rst:82
 msgid "Configure the auth token into the webservice."
 msgstr ""
 
-#: ../content/installation.rst:82
+#: ../content/installation.rst:83
 msgid "Setup the answer template."
 msgstr ""
 
-#: ../content/installation.rst:84
+#: ../content/installation.rst:85
 msgid "Continue depending on your use case with :doc:`chat` or :doc:`rag`."
 msgstr ""
 
@@ -401,95 +401,103 @@ msgstr ""
 msgid "Search restrictions are able to use any field and restriction from the classic search function (refer to the User Guide for details). You may use the same configuration suffixed ``...###0200-Custom1`` for a second RAG definition, and so on."
 msgstr ""
 
-#: ../content/rag.rst:114
+#: ../content/rag.rst:116
+msgid "The default values in ``OTOBOAI::Ticket::SearchRestrictions###0100-Default`` will not select typical ticket data to be imported into the AI. It is mandatory to add here valid values for Queues, StateTypes etc. Also, the settings ``TicketCloseTimeNewerMinutes`` and ``TicketCloseTimeOlderMinutes`` need to configured to make sure your tickets are imported into the AI."
+msgstr ""
+
+#: ../content/rag.rst:120
+msgid "The same applies to the settings ``OTOBOAI::Document::SearchRestrictions###0100-Default`` and ``OTOBOAI::FAQ::SearchRestrictions###0100-Default``, which need to be adjusted in order to import your data correctly. The default values in ``OTOBOAI::Ticket::SearchRestrictions###0100-Default`` are merely of an illustrative nature will most certainly not yield in data imported into the RAG system. You need to edit these values to account for your configuration of Queues, StateTypes, etc."
+msgstr ""
+
+#: ../content/rag.rst:124
 msgid "To configure which pipeline generate answers for a queue, configure the system setting ``OTOBOAI::QueueToRAGMapping``."
 msgstr ""
 
-#: ../content/rag.rst:118
+#: ../content/rag.rst:128
 msgid "Only text information is indexed by the RAG system and used for answer generation. No documents, pictures, or attachments will be processed."
 msgstr ""
 
-#: ../content/rag.rst:123
+#: ../content/rag.rst:133
 msgid "Initial Data Import"
 msgstr ""
 
-#: ../content/rag.rst:125
+#: ../content/rag.rst:135
 msgid "Place documentation under the path configured in the system setting ``OTOBOAI::Document::SearchRestrictions`` relative to your OTOBO installation."
 msgstr ""
 
-#: ../content/rag.rst:129
+#: ../content/rag.rst:139
 msgid "`Pandoc <https://pandoc.org>`_ may be helpful with data conversion. Beware of index files, they match on every topic and are relatively dense. Beware of files like a license, they are never a match."
 msgstr ""
 
-#: ../content/rag.rst:133
+#: ../content/rag.rst:143
 msgid "And import all the data from command line:"
 msgstr ""
 
-#: ../content/rag.rst:142
+#: ../content/rag.rst:152
 msgid "It is advisable to exclude a portion of the data from import. The import command supports the parameters ``--sample-nth`` and ``--sample``. A generated sample may serve as evaluation set for tuning (see :doc:`tuning`)."
 msgstr ""
 
-#: ../content/rag.rst:146
+#: ../content/rag.rst:156
 msgid "You may verify the import using the command line from the ``rag`` container:"
 msgstr ""
 
-#: ../content/rag.rst:154
+#: ../content/rag.rst:164
 msgid "Incremental Data Ingestion"
 msgstr ""
 
-#: ../content/rag.rst:156
+#: ../content/rag.rst:166
 msgid "The ``OTOBO-AI`` package supports the automatic synchronization of newly added or updated tickets and FAQ items via incremental ingestion. More precisely, OTOBO listens to a pre-defined set of Ticket and FAQ related *Events*, which in turn re-query the ``SearchRestrictions`` when triggered."
 msgstr ""
 
-#: ../content/rag.rst:159
+#: ../content/rag.rst:169
 msgid "This means that the configuration of ``OTOBOAI::Document::SearchRestrictions`` and ``Ticket::EventModulePost###8300-OTOBOAIIncrementalSynchronization`` are closely coupled. For correct incremental ingestion, please make sure that your specified *Events* fully cover your ``SearchRestrictions``, per data source."
 msgstr ""
 
-#: ../content/rag.rst:162
+#: ../content/rag.rst:172
 msgid "For a list of ticket related events, refer to the Developer Manual. The event configuration supports regular expressions, as seen in the default setting:"
 msgstr ""
 
-#: ../content/rag.rst:169
+#: ../content/rag.rst:179
 msgid "The FAQ event configuration is done by ``FAQ::EventModulePost###8300-OTOBOAIIncrementalSynchronization``. Supported events are covered by the default setting:"
 msgstr ""
 
-#: ../content/rag.rst:178
+#: ../content/rag.rst:188
 msgid "This functionality is **disabled by default**. It also relies on a running OTOBO Daemon, as it handles the asynchronous ingestion calls."
 msgstr ""
 
-#: ../content/rag.rst:180
+#: ../content/rag.rst:190
 msgid "On OTOBO 11.0 the FAQ event configuration requires the optional ``Elasticsearch-FAQ`` package to provide event handling. For 11.1 and later, the FAQ event configuration is supported by default."
 msgstr ""
 
-#: ../content/rag.rst:186
+#: ../content/rag.rst:196
 msgid "Answer Generation"
 msgstr ""
 
-#: ../content/rag.rst:188
+#: ../content/rag.rst:198
 msgid "You may generate answers either prompted by a customer request or manually on-demand."
 msgstr ""
 
-#: ../content/rag.rst:192
+#: ../content/rag.rst:202
 msgid "On-Demand Answers"
 msgstr ""
 
-#: ../content/rag.rst:194
+#: ../content/rag.rst:204
 msgid "There are two options to obtain on-demand answers, either the command line or a new widget in the agent overview. The widget is served by the default RAG. If you handle sensitive information with the default RAG, add a ``Group`` to the setting ``DashboardBackend###0160-OTOBOAIDashboard`` to restrict access to the widget."
 msgstr ""
 
-#: ../content/rag.rst:198
+#: ../content/rag.rst:208
 msgid "The command line may be reached from the command line interface of OTOBO:"
 msgstr ""
 
-#: ../content/rag.rst:207
+#: ../content/rag.rst:217
 msgid "Automatic Answer Suggestions"
 msgstr ""
 
-#: ../content/rag.rst:209
+#: ../content/rag.rst:219
 msgid "However, OTOBO may query the RAG for an answer suggestion whenever a new article is created. Upon retrieval, the answer is stored in a dynamic field, configured in ``OTOBOAI::DynamicFieldOTOBOAI``. It may be referenced from an answer template. The pre-configured answer template is ``OTOBOAI Answer Template``. Assign it to the queues you want to offer RAG answer suggestions to the agents. Refer to the `Admin Manual <https://doc.otobo.org/manual/admin/11.1/en/content/administration-area/ticket-settings/templates-queues.html>`_ for more information. If an agent chooses this answer template, the AI answer is revealed, may be edited by the agent and sent out to the customer."
 msgstr ""
 
-#: ../content/rag.rst:219
+#: ../content/rag.rst:229
 msgid "You may also assign the dynamic field to the ``AgentTicketZoom`` to display the answer at the article and have it accessible without the need to lock the ticket."
 msgstr ""
 
