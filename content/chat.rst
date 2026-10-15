@@ -92,7 +92,7 @@ Place a file named ``docker-compose/otobo-override-nginx-openwebui.yml`` in this
 
       touch /opt/otobo-docker/docker-compose/otobo-override-nginx-openwebui.yml
 
-Place the following content in the file:
+Place the following content in the file created above:
 
 .. code-block:: yaml
 

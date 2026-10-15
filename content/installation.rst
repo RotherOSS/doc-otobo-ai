@@ -46,7 +46,7 @@ First, set up the docker compose project:
 .. code-block:: bash
 
     cd /opt
-    git clone git@github.com:RotherOSS/otobo-ai-services.git
+    git clone https://github.com/RotherOSS/otobo-ai-services.git
     cd otobo-ai-services
 
 Create a ``.env`` file in the root directory to configure environment variables:
@@ -67,6 +67,7 @@ Use Docker Compose to run the configured services:
 
 ``OTOBO-AI`` Package
 --------------------
+
 
 The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``.
 See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO.
