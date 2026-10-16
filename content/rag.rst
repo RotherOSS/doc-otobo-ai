@@ -209,7 +209,7 @@ The command line may be reached from the command line interface of OTOBO:
 
 .. code-block:: bash
 
-    docker compose exec web ./bin/otobo.Console.pl Maint::AI::GetAnswer "Hello Roboto!"
+    docker compose exec web ./bin/otobo.Console.pl Maint::AI::GetAnswer "Hi!"
 
 
 
