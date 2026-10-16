@@ -82,7 +82,7 @@ In order to obtain faithful answers, lower values are recommended.
 Evaluation
 ----------
 
-In order to evaluate the impact of changes to the quality of system responses, Roboto facilitates scoring of answers generated for an *evaluation set*.
+In order to evaluate the impact of changes to the quality of system responses, the RAG system facilitates scoring of answers generated for an *evaluation set*.
 An evaluation set is a portion of the ticket data, randomly chosen and deliberately not imported (see :doc:`rag`).
 You may generate a *sample* during import like this:
 
@@ -91,11 +91,11 @@ You may generate a *sample* during import like this:
     bin/otobo.console.pl Maint::AI::Import --sample-nth 20 --sample ~/var/ai/sample.json
 
 Sample size should depend on the amount of tickets to import, but should range from 20% (hard validation) to 5% (plausibility check).
-This evaluation set might even be excluded from reimport by passing the ``--reference`` argument.
+This evaluation set might even be excluded from re-import by passing the ``--reference`` argument.
 It seems reasonable to keep a sample file at ``~/var/ai/sample.json``.
 If the evaluation set is ever imported, evaluation will be structurally biased and hence useless.
 
-In order to evaluate Roboto's performance on an evaluation set, answers are generated for the tickets in the evaluation set and these answers are evaluated with respect to a set of freely chosen criteria.
+In order to evaluate the RAG system's performance on an evaluation set, answers are generated for the tickets in the evaluation set and these answers are evaluated with respect to a set of freely chosen criteria.
 These evaluation criteria are defined in the ``eval_prompt.txt`` of your RAG definition.
 The difference to the RAG prompt is the data description and format definition as the task.
 
