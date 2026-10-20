@@ -51,7 +51,7 @@ This allows to keep the access management consistent with the configuration in O
 
 The MCP server is developed in its own repository `otobo-ai-mcp <https://github.com/RotherOSS/otobo-ai-mcp>`_.
 However, its images are published to Docker Hub and may be used in the OTOBO Docker Compose setup.
-Example configuration is provided in the ``docker-compose/otobo-ai_mcp.yml`` file of the ``otobo-ai-services``.
+Example configuration is provided in the ``docker-compose/otobo-ai_mcp.yml`` file of the ``otobo-ai-stack``.
 To activate the MCP server, you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the MCP labeled section.
 
 The MCP server is not exposed to the outside by default.
@@ -72,7 +72,7 @@ It is recommended to separate the chat sessions of different users.
 Hence, the chat service should be able to handle user authentication.
 Users may be managed by the chat service itself or by an external identity provider like LDAP or OIDC.
 
-Within the ``otobo-ai-services`` `OpenWebUI <https://openwebui.com>`_ is provided as a reference implementation of a chat service.
+Within the ``otobo-ai-stack`` `OpenWebUI <https://openwebui.com>`_ is provided as a reference implementation of a chat service.
 You may find the Docker Compose file in the repository at ``docker-compose/otobo-ai_openwebui.yml``.
 The service is pre-configured to share most of the variables declared in the ``.env`` (see: :doc:`installation`).
 To activate the service you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the chat labeled section.

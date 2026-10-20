@@ -13,7 +13,7 @@ During this step, the information is scrubbed, chunked, and sent to a small LLM 
 This procedure is called *embedding*.
 Every vector describes a point in high dimensional space.
 Similar information will be close to each other, while unrelated information will be far apart.
-All the vectors and documents are stored in the ``otobo-ai-services``.
+All the vectors and documents are stored in the ``otobo-ai-stack``.
 This allows for fast selection of documents that address the same topic.
 
 If a new article is created, **generate an answer**:
@@ -30,7 +30,7 @@ Setup
 -----
 
 OTOBO-AI supports multiple RAG definitions, each with its own input data selection, prompt and output queue.
-While the RAG definition is stored in the ``otobo-ai-services`` docker compose project, input and output is configured in the OTOBO package.
+While the RAG definition is stored in the ``otobo-ai-stack`` docker compose project, input and output is configured in the OTOBO package.
 These setups are called *pipelines*.
 You may have multiple separate pipelines, for example one for each department or product you are supporting.
 Pipelines allow for complete separation of concerns.
@@ -71,7 +71,7 @@ To set up such a pipeline, you need to create a RAG definition.
 RAG Definition
 ~~~~~~~~~~~~~~
 
-Under ``/opt/otobo-ai-services/rag_examples``, example RAG definitions are provided.
+Under ``/opt/otobo-ai-stack/rag_examples``, example RAG definitions are provided.
 As a basic template the ``default`` RAG definition is provided.
 This RAG definition supports Tickets (t), FAQ (f) and Documentation (d).
 Copy the RAG description to your RAG definition folder:
