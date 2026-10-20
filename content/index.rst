@@ -29,12 +29,12 @@ OTOBO AI implements two main features:
 
 There are two components that interface OTOBO with an LLM:
 
-#. The ``otobo-ai-services``.
+#. The ``otobo-ai-stack``.
 #. The ``otobo-ai`` OTOBO package.
 
-The OTOBO package is the interface between OTOBO and the services.
+The OTOBO package is the interface between OTOBO and the stack.
 It also integrates the required configuration to start a chat session with the LLM (Large Language Model).
-The services hold the data in a format that allows finding similar data related to a request efficiently, and interface with the LLM.
+The stack holds the data in a format that allows finding similar data related to a request efficiently, and interfaces with the LLM.
 The chat is accompanied by a MCP (Model Context Protocol) server that allows a LLM to access your data in OTOBO.
 Both features may be used independently, but they can also be combined to provide a more powerful experience.
 Langfuse may be used to monitor the requests and responses of the LLM, and to provide insights into the performance of the system.

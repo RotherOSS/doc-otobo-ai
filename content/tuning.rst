@@ -12,7 +12,7 @@ Prompt
 ------
 
 Prompt templates can be adjusted very freely.
-They are placed at the rags folder in the folders of the ``otobo-ai-services``.
+They are placed at the rags folder in the folders of the ``otobo-ai-stack``.
 There are two prompts, one for answer generation, which is discussed here, and one for answer evaluation, which is discussed below.
 They have significant impact on the form of the generated answer.
 
@@ -60,7 +60,7 @@ Models
 There are two models at play, one that provides the embeddings and hence is responsible for the decision on what information is deemed most relevant to the question at hand.
 The other one is for answer generation and extracts an answer from the presented documents and presents it in the form requested in the prompt.
 Both models have to be capable of handling the language(s) you want to process.
-They may be configured in the ``.env`` file of the ``otobo-ai-services``.
+They may be configured in the ``.env`` file of the ``otobo-ai-stack``.
 
 The main characteristics of the embedding models, aside from benchmarks, are *context size* and *dimensions*.
 The bigger the information pieces to process are, the bigger the *context size* needs to be.
