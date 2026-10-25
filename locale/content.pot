@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 07:52+0000\n"
+"POT-Creation-Date: 2026-10-25 11:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgid "The OTOBO MCP server serves as a proxy to the OTOBO webservices. It relie
 msgstr ""
 
 #: ../content/chat.rst:52
-msgid "The MCP server is developed in its own repository `otobo-ai-mcp <https://github.com/RotherOSS/otobo-ai-mcp>`_. However, its images are published to Docker Hub and may be used in the OTOBO Docker Compose setup. Example configuration is provided in the ``docker-compose/otobo-ai_mcp.yml`` file of the ``otobo-ai-services``. To activate the MCP server, you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the MCP labeled section."
+msgid "The MCP server is developed in its own repository `otobo-ai-mcp <https://github.com/RotherOSS/otobo-ai-mcp>`_. However, its images are published to Docker Hub and may be used in the OTOBO Docker Compose setup. Example configuration is provided in the ``docker-compose/otobo-ai_mcp.yml`` file of the ``otobo-ai-stack``. To activate the MCP server, you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the MCP labeled section."
 msgstr ""
 
 #: ../content/chat.rst:57
@@ -61,7 +61,7 @@ msgid "The chat service is interchangeable. However, it needs to be able to pick
 msgstr ""
 
 #: ../content/chat.rst:75
-msgid "Within the ``otobo-ai-services`` `OpenWebUI <https://openwebui.com>`_ is provided as a reference implementation of a chat service. You may find the Docker Compose file in the repository at ``docker-compose/otobo-ai_openwebui.yml``. The service is pre-configured to share most of the variables declared in the ``.env`` (see: :doc:`installation`). To activate the service you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the chat labeled section."
+msgid "Within the ``otobo-ai-stack`` `OpenWebUI <https://openwebui.com>`_ is provided as a reference implementation of a chat service. You may find the Docker Compose file in the repository at ``docker-compose/otobo-ai_openwebui.yml``. The service is pre-configured to share most of the variables declared in the ``.env`` (see: :doc:`installation`). To activate the service you need to add the file to the ``COMPOSE_FILE`` variable in the ``.env`` file and fill out the required variables in the chat labeled section."
 msgstr ""
 
 #: ../content/chat.rst:86
@@ -149,7 +149,7 @@ msgid "There are two components that interface OTOBO with an LLM:"
 msgstr ""
 
 #: ../content/index.rst:32
-msgid "The ``otobo-ai-services``."
+msgid "The ``otobo-ai-stack``."
 msgstr ""
 
 #: ../content/index.rst:33
@@ -158,7 +158,7 @@ msgid "The ``otobo-ai`` OTOBO package."
 msgstr ""
 
 #: ../content/index.rst:35
-msgid "The OTOBO package is the interface between OTOBO and the services. It also integrates the required configuration to start a chat session with the LLM (Large Language Model). The services hold the data in a format that allows finding similar data related to a request efficiently, and interface with the LLM. The chat is accompanied by a MCP (Model Context Protocol) server that allows a LLM to access your data in OTOBO. Both features may be used independently, but they can also be combined to provide a more powerful experience. Langfuse may be used to monitor the requests and responses of the LLM, and to provide insights into the performance of the system. The following diagram illustrates the architecture of OTOBO AI:"
+msgid "The OTOBO package is the interface between OTOBO and the stack. It also integrates the required configuration to start a chat session with the LLM (Large Language Model). The stack holds the data in a format that allows finding similar data related to a request efficiently, and interfaces with the LLM. The chat is accompanied by a MCP (Model Context Protocol) server that allows a LLM to access your data in OTOBO. Both features may be used independently, but they can also be combined to provide a more powerful experience. Langfuse may be used to monitor the requests and responses of the LLM, and to provide insights into the performance of the system. The following diagram illustrates the architecture of OTOBO AI:"
 msgstr ""
 
 #: ../content/index.rst:73
@@ -190,7 +190,7 @@ msgid "Installation"
 msgstr ""
 
 #: ../content/installation.rst:4
-msgid "This chapter describes the installation of OTOBO AI. It guides you through the setup process for both the services and the OTOBO package. For further configuration, refer to the specific use case."
+msgid "This chapter describes the installation of OTOBO AI. It guides you through the setup process for both the stack and the OTOBO package. For further configuration, refer to the specific use case."
 msgstr ""
 
 #: ../content/installation.rst:8
@@ -198,7 +198,7 @@ msgid "There are two components to OTOBO AI:"
 msgstr ""
 
 #: ../content/installation.rst:10
-msgid "The services ``otobo-ai-services``."
+msgid "The stack ``otobo-ai-stack``."
 msgstr ""
 
 #: ../content/installation.rst:13
@@ -214,82 +214,82 @@ msgid "In order to setup the OTOBO AI solution, you need to meet the following r
 msgstr ""
 
 #: ../content/installation.rst:21
-msgid "The host you run the OTOBO AI services on needs 20GB free disk space for tooling itself, as well as free disk space to hold your OTOBO plain text data. Further, you need at least 2GB RAM and 2 spare CPU cores. Requirements grow with the number of active Agents and Article creation volume."
+msgid "The host you run the OTOBO AI stack on needs 20GB free disk space for tooling itself, as well as free disk space to hold your OTOBO plain text data. Further, you need at least 2GB RAM and 2 spare CPU cores. Requirements grow with the number of active Agents and Article creation volume."
 msgstr ""
 
 #: ../content/installation.rst:24
-msgid "You need connection to at least two LLMs by OpenAI compatible API. For the RAG you need an embedding model and a generation model. For the chat feature you need a generation model with tool calling capability."
+msgid "You need connection to at least two LLMs by OpenAI compatible API. For the RAG you need an embedding model and a generation model. For the chat feature you need a generation model with tool calling capability. The context window size and language capabilities should reflect your data."
 msgstr ""
 
-#: ../content/installation.rst:31
-msgid "``otobo-ai-services`` Docker Compose Stack"
+#: ../content/installation.rst:32
+msgid "``otobo-ai-stack`` Docker Compose Stack"
 msgstr ""
 
-#: ../content/installation.rst:33
-msgid "The ``otobo-ai-services`` are provided as self-contained ``docker compose`` stack. There are two docker containers:"
-msgstr ""
-
-#: ../content/installation.rst:36
-msgid "``rag``"
+#: ../content/installation.rst:34
+msgid "The ``otobo-ai-stack`` is provided as self-contained ``docker compose`` stack. There are two docker containers:"
 msgstr ""
 
 #: ../content/installation.rst:37
+msgid "``rag``"
+msgstr ""
+
+#: ../content/installation.rst:38
 msgid "A Chroma database for vector data and webservice to interface with OTOBO"
 msgstr ""
 
-#: ../content/installation.rst:40
+#: ../content/installation.rst:41
 msgid "``postgres``"
 msgstr ""
 
-#: ../content/installation.rst:39
+#: ../content/installation.rst:40
 msgid "A database holding prepared data"
 msgstr ""
 
-#: ../content/installation.rst:42
-msgid "The repository may be found here: https://github.com/RotherOSS/otobo-ai-services"
+#: ../content/installation.rst:43
+msgid "The repository may be found here: https://github.com/RotherOSS/otobo-ai-stack"
 msgstr ""
 
-#: ../content/installation.rst:44
+#: ../content/installation.rst:45
 msgid "First, set up the docker compose project:"
 msgstr ""
 
-#: ../content/installation.rst:52
+#: ../content/installation.rst:53
 msgid "Create a ``.env`` file in the root directory to configure environment variables:"
 msgstr ""
 
-#: ../content/installation.rst:58
+#: ../content/installation.rst:59
 msgid "Edit the ``.env`` file to set your desired configuration options."
 msgstr ""
 
-#: ../content/installation.rst:60
+#: ../content/installation.rst:61
 msgid "Use Docker Compose to run the configured services:"
 msgstr ""
 
-#: ../content/installation.rst:69
+#: ../content/installation.rst:70
 msgid "``OTOBO-AI`` Package"
 msgstr ""
 
-#: ../content/installation.rst:72
+#: ../content/installation.rst:73
 msgid "The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``. See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO."
 msgstr ""
 
-#: ../content/installation.rst:75
+#: ../content/installation.rst:76
 msgid "Configure the package settings in the system configuration. See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions. The package manual includes all relevant information. You may just search ``OTOBOAI::`` to find all relevant settings. These are the basic steps:"
 msgstr ""
 
-#: ../content/installation.rst:81
+#: ../content/installation.rst:82
 msgid "Select data for import into the RAG stack (what your answers are based on)."
 msgstr ""
 
-#: ../content/installation.rst:82
+#: ../content/installation.rst:83
 msgid "Configure the auth token into the webservice."
 msgstr ""
 
-#: ../content/installation.rst:83
+#: ../content/installation.rst:84
 msgid "Setup the answer template."
 msgstr ""
 
-#: ../content/installation.rst:85
+#: ../content/installation.rst:86
 msgid "Continue depending on your use case with :doc:`chat` or :doc:`rag`."
 msgstr ""
 
@@ -306,7 +306,7 @@ msgid "Workflow"
 msgstr ""
 
 #: ../content/rag.rst:11
-msgid "At first, all tickets, FAQ and external documentation are **imported** in the RAG system. During this step, the information is scrubbed, chunked, and sent to a small LLM to obtain a numeric vector that describes the presented information. This procedure is called *embedding*. Every vector describes a point in high dimensional space. Similar information will be close to each other, while unrelated information will be far apart. All the vectors and documents are stored in the ``otobo-ai-services``. This allows for fast selection of documents that address the same topic."
+msgid "At first, all tickets, FAQ and external documentation are **imported** in the RAG system. During this step, the information is scrubbed, chunked, and sent to a small LLM to obtain a numeric vector that describes the presented information. This procedure is called *embedding*. Every vector describes a point in high dimensional space. Similar information will be close to each other, while unrelated information will be far apart. All the vectors and documents are stored in the ``otobo-ai-stack``. This allows for fast selection of documents that address the same topic."
 msgstr ""
 
 #: ../content/rag.rst:19
@@ -338,7 +338,7 @@ msgid "Setup"
 msgstr ""
 
 #: ../content/rag.rst:32
-msgid "OTOBO-AI supports multiple RAG definitions, each with its own input data selection, prompt and output queue. While the RAG definition is stored in the ``otobo-ai-services`` docker compose project, input and output is configured in the OTOBO package. These setups are called *pipelines*. You may have multiple separate pipelines, for example one for each department or product you are supporting. Pipelines allow for complete separation of concerns."
+msgid "OTOBO-AI supports multiple RAG definitions, each with its own input data selection, prompt and output queue. While the RAG definition is stored in the ``otobo-ai-stack`` docker compose project, input and output is configured in the OTOBO package. These setups are called *pipelines*. You may have multiple separate pipelines, for example one for each department or product you are supporting. Pipelines allow for complete separation of concerns."
 msgstr ""
 
 #: ../content/rag.rst:68
@@ -354,7 +354,7 @@ msgid "RAG Definition"
 msgstr ""
 
 #: ../content/rag.rst:74
-msgid "Under ``/opt/otobo-ai-services/rag_examples``, example RAG definitions are provided. As a basic template the ``default`` RAG definition is provided. This RAG definition supports Tickets (t), FAQ (f) and Documentation (d). Copy the RAG description to your RAG definition folder:"
+msgid "Under ``/opt/otobo-ai-stack/rag_examples``, example RAG definitions are provided. As a basic template the ``default`` RAG definition is provided. This RAG definition supports Tickets (t), FAQ (f) and Documentation (d). Copy the RAG description to your RAG definition folder:"
 msgstr ""
 
 #: ../content/rag.rst:84
@@ -514,7 +514,7 @@ msgid "Prompt"
 msgstr ""
 
 #: ../content/tuning.rst:14
-msgid "Prompt templates can be adjusted very freely. They are placed at the rags folder in the folders of the ``otobo-ai-services``. There are two prompts, one for answer generation, which is discussed here, and one for answer evaluation, which is discussed below. They have significant impact on the form of the generated answer."
+msgid "Prompt templates can be adjusted very freely. They are placed at the rags folder in the folders of the ``otobo-ai-stack``. There are two prompts, one for answer generation, which is discussed here, and one for answer evaluation, which is discussed below. They have significant impact on the form of the generated answer."
 msgstr ""
 
 #: ../content/tuning.rst:19
@@ -546,7 +546,7 @@ msgid "Models"
 msgstr ""
 
 #: ../content/tuning.rst:60
-msgid "There are two models at play, one that provides the embeddings and hence is responsible for the decision on what information is deemed most relevant to the question at hand. The other one is for answer generation and extracts an answer from the presented documents and presents it in the form requested in the prompt. Both models have to be capable of handling the language(s) you want to process. They may be configured in the ``.env`` file of the ``otobo-ai-services``."
+msgid "There are two models at play, one that provides the embeddings and hence is responsible for the decision on what information is deemed most relevant to the question at hand. The other one is for answer generation and extracts an answer from the presented documents and presents it in the form requested in the prompt. Both models have to be capable of handling the language(s) you want to process. They may be configured in the ``.env`` file of the ``otobo-ai-stack``."
 msgstr ""
 
 #: ../content/tuning.rst:65
