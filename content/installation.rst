@@ -2,12 +2,12 @@ Installation
 ============
 
 This chapter describes the installation of OTOBO AI.
-It guides you through the setup process for both the services and the OTOBO package.
+It guides you through the setup process for both the stack and the OTOBO package.
 For further configuration, refer to the specific use case.
 
 There are two components to OTOBO AI:
 
-#. The services ``otobo-ai-services``.
+#. The stack ``otobo-ai-stack``.
 #. The ``otobo-ai`` OTOBO package.
 
 These installation instructions illustrate their installation.
@@ -18,19 +18,20 @@ Requirements
 
 In order to setup the OTOBO AI solution, you need to meet the following requirements:
 
-#. The host you run the OTOBO AI services on needs 20GB free disk space for tooling itself, as well as free disk space to hold your OTOBO plain text data.
+#. The host you run the OTOBO AI stack on needs 20GB free disk space for tooling itself, as well as free disk space to hold your OTOBO plain text data.
    Further, you need at least 2GB RAM and 2 spare CPU cores.
    Requirements grow with the number of active Agents and Article creation volume.
 #. You need connection to at least two LLMs by OpenAI compatible API.
    For the RAG you need an embedding model and a generation model.
    For the chat feature you need a generation model with tool calling capability.
+   The context window size and language capabilities should reflect your data.
 
 
 
-``otobo-ai-services`` Docker Compose Stack
-------------------------------------------
+``otobo-ai-stack`` Docker Compose Stack
+---------------------------------------
 
-The ``otobo-ai-services`` are provided as self-contained ``docker compose`` stack.
+The ``otobo-ai-stack`` is provided as self-contained ``docker compose`` stack.
 There are two docker containers:
 
 ``rag``
@@ -39,15 +40,15 @@ There are two docker containers:
     A database holding prepared data
 
 
-The repository may be found here: https://github.com/RotherOSS/otobo-ai-services
+The repository may be found here: https://github.com/RotherOSS/otobo-ai-stack
 
 First, set up the docker compose project:
 
 .. code-block:: bash
 
     cd /opt
-    git clone https://github.com/RotherOSS/otobo-ai-services.git
-    cd otobo-ai-services
+    git clone https://github.com/RotherOSS/otobo-ai-stack.git
+    cd otobo-ai-stack
 
 Create a ``.env`` file in the root directory to configure environment variables:
 
