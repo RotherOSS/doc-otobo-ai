@@ -18,6 +18,7 @@ Requirements
 
 In order to setup the OTOBO AI solution, you need to meet the following requirements:
 
+#. An OTOBO version >= 11.0.16, the latest version is recommended.
 #. The host you run the OTOBO AI stack on needs 20GB free disk space for tooling itself, as well as free disk space to hold your OTOBO plain text data.
    Further, you need at least 2GB RAM and 2 spare CPU cores.
    Requirements grow with the number of active Agents and Article creation volume.
