@@ -24,6 +24,7 @@ In order to setup the OTOBO AI solution, you need to meet the following requirem
 #. You need connection to at least two LLMs by OpenAI compatible API.
    For the RAG you need an embedding model and a generation model.
    For the chat feature you need a generation model with tool calling capability.
+   The context window size and language capabilities should reflect your data.
 
 
 
