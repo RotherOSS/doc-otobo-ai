@@ -8,11 +8,6 @@ OTOBO AI Manual
 This is the OTOBO AI Manual.
 It serves as a reference to help administrators manage and configure the OTOBO AI capabilities effectively.
 
-.. hint::
-
-   OTOBO AI is currently in closed beta.
-   If interested, feel free to `contact us <mailto:hallo@otobo.io>`_.
-
 
 Overview
 --------
