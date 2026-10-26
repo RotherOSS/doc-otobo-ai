@@ -50,12 +50,14 @@ First, set up the docker compose project:
     cd /opt
     git clone https://github.com/RotherOSS/otobo-ai-stack.git
     cd otobo-ai-stack
+    git tag --list # shows released versions
+    git checkout <version> # e.g., git checkout rel-1_0
 
 Create a ``.env`` file in the root directory to configure environment variables:
 
 .. code-block:: bash
 
-    cp .docker_compose_env_ai .env
+    cp .env-example .env
 
 Edit the ``.env`` file to set your desired configuration options.
 
