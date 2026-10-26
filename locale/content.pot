@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 12:12+0000\n"
+"POT-Creation-Date: 2026-10-26 09:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,7 +108,7 @@ msgstr ""
 msgid "`LibreChat <https://www.librechat.ai>`_ may also be used as a chat service. While it is more capable out-of-the-box, to handle a larger amount of users, it is more complex to maintain."
 msgstr ""
 
-#: ../content/index.rst:74
+#: ../content/index.rst:64
 msgid "Contents"
 msgstr ""
 
@@ -121,67 +121,59 @@ msgid "This is the OTOBO AI Manual. It serves as a reference to help administrat
 msgstr ""
 
 #: ../content/index.rst:13
-msgid "OTOBO AI is currently in closed beta. If interested, feel free to `contact us <mailto:hallo@otobo.io>`_."
-msgstr ""
-
-#: ../content/index.rst:17
-msgid "This documentation is for the **11.1 beta** version of OTOBO. It may contain incomplete or inaccurate information, and some features may not be fully functional. Please use this documentation with caution and report any issues to the OTOBO development team. You may find the **documentation for the latest stable release** at https://doc.otobo.org/manual/ai/11.0/en/content/index.html."
-msgstr ""
-
-#: ../content/index.rst:23
 msgid "Overview"
 msgstr ""
 
-#: ../content/index.rst:25
+#: ../content/index.rst:15
 msgid "OTOBO AI implements two main features:"
 msgstr ""
 
-#: ../content/index.rst:27
+#: ../content/index.rst:17
 msgid "A RAG (Retrieval-Augmented Generation) system which is able to generate response suggestions for tickets based on the data from within your OTOBO."
 msgstr ""
 
-#: ../content/index.rst:28
+#: ../content/index.rst:18
 msgid "A chat system that allows you to operate your OTOBO in natural language."
 msgstr ""
 
-#: ../content/index.rst:30
+#: ../content/index.rst:20
 msgid "There are two components that interface OTOBO with an LLM:"
 msgstr ""
 
-#: ../content/index.rst:32
+#: ../content/index.rst:22
 msgid "The ``otobo-ai-stack``."
 msgstr ""
 
-#: ../content/index.rst:33
+#: ../content/index.rst:23
 #: ../content/installation.rst:11
 msgid "The ``otobo-ai`` OTOBO package."
 msgstr ""
 
-#: ../content/index.rst:35
+#: ../content/index.rst:25
 msgid "The OTOBO package is the interface between OTOBO and the stack. It also integrates the required configuration to start a chat session with the LLM (Large Language Model). The stack holds the data in a format that allows finding similar data related to a request efficiently, and interfaces with the LLM. The chat is accompanied by a MCP (Model Context Protocol) server that allows a LLM to access your data in OTOBO. Both features may be used independently, but they can also be combined to provide a more powerful experience. Langfuse may be used to monitor the requests and responses of the LLM, and to provide insights into the performance of the system. The following diagram illustrates the architecture of OTOBO AI:"
 msgstr ""
 
-#: ../content/index.rst:73
+#: ../content/index.rst:63
 msgid "Architecture Overview for OTOBO AI"
 msgstr ""
 
-#: ../content/index.rst:86
+#: ../content/index.rst:76
 msgid "License"
 msgstr ""
 
-#: ../content/index.rst:88
+#: ../content/index.rst:78
 msgid "This work is copyrighted by ROTHER OSS GmbH (https://otobo.io), Oberwalting 31, 94339 Leiblfing, Germany"
 msgstr ""
 
-#: ../content/index.rst:91
+#: ../content/index.rst:81
 msgid "Terms and Conditions Rother OSS: Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled \"COPYING\"."
 msgstr ""
 
-#: ../content/index.rst:98
+#: ../content/index.rst:88
 msgid "Published by: Rother OSS GmbH, (https://otobo.de), Oberwalting 31, 94339 Leiblfing, Germany."
 msgstr ""
 
-#: ../content/index.rst:101
+#: ../content/index.rst:91
 msgid "Authors: Rother OSS GmbH (https://otobo.de)."
 msgstr ""
 
@@ -257,43 +249,43 @@ msgstr ""
 msgid "First, set up the docker compose project:"
 msgstr ""
 
-#: ../content/installation.rst:54
+#: ../content/installation.rst:56
 msgid "Create a ``.env`` file in the root directory to configure environment variables:"
 msgstr ""
 
-#: ../content/installation.rst:60
+#: ../content/installation.rst:62
 msgid "Edit the ``.env`` file to set your desired configuration options."
 msgstr ""
 
-#: ../content/installation.rst:62
+#: ../content/installation.rst:64
 msgid "Use Docker Compose to run the configured services:"
 msgstr ""
 
-#: ../content/installation.rst:71
+#: ../content/installation.rst:73
 msgid "``OTOBO-AI`` Package"
 msgstr ""
 
-#: ../content/installation.rst:74
+#: ../content/installation.rst:76
 msgid "The package can simply be installed via the OTOBO Package Manager on OTOBO version ``>= 11.0``. See the `OTOBO Admin Guide: Package Manager <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/package-manager.html>`_ for details on package management in OTOBO."
 msgstr ""
 
-#: ../content/installation.rst:77
+#: ../content/installation.rst:79
 msgid "Configure the package settings in the system configuration. See the `OTOBO Admin Guide: System Configuration <https://doc.otobo.org/manual/admin/11.0/en/content/administration-area/administration/system-configuration.html>`_ for general instructions. The package manual includes all relevant information. You may just search ``OTOBOAI::`` to find all relevant settings. These are the basic steps:"
 msgstr ""
 
-#: ../content/installation.rst:83
+#: ../content/installation.rst:85
 msgid "Select data for import into the RAG stack (what your answers are based on)."
 msgstr ""
 
-#: ../content/installation.rst:84
+#: ../content/installation.rst:86
 msgid "Configure the auth token into the webservice."
 msgstr ""
 
-#: ../content/installation.rst:85
+#: ../content/installation.rst:87
 msgid "Setup the answer template."
 msgstr ""
 
-#: ../content/installation.rst:87
+#: ../content/installation.rst:89
 msgid "Continue depending on your use case with :doc:`chat` or :doc:`rag`."
 msgstr ""
 
